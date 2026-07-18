@@ -117,16 +117,17 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 *   **Persistencia ante Interrupciones:** El sistema debe retener de forma local los datos de un fardo o reporte de incidencia si se interrumpe la conexión a internet en medio de la digitación, evitando perder el progreso en la pantalla única.
 
 ### RNF-02 · Eficiencia de Desempeño ★ CRÍTICA
-*   **Velocidad de Respuesta Crítica:** El motor de Consulta Express debe renderizar la cuadrícula matricial (Tallas/Colores) en $\le 0.8$ segundos tras ingresar el código de la prenda. Al compartirse la pantalla para ventas y consultas de vendedores, cada segundo ahorrado evita aglomeraciones en la fila.
-*   **Retorno Inmediato al Modo Venta:** El sistema debe permitir limpiar la consulta de stock con un solo comando de teclado para que la cajera retome el cobro al cliente de inmediato.
+*   **Velocidad de Respuesta con Escáner:** El motor de Consulta Express debe procesar la lectura del escáner de códigos de barras y renderizar la cuadrícula matricial (Tallas/Colores) en $\le 0.5$ segundos. Al compartirse la pantalla entre el cobro y las consultas de los vendedores, la respuesta del periférico debe ser instantánea.
+*   **Retorno Inmediato al Modo Venta:** El sistema debe permitir limpiar la consulta de stock con un solo comando de teclado o un escaneo de código de control para que la cajera retome el cobro al cliente de inmediato.
 
 ### RNF-03 · Seguridad y Control de Sesiones
 *   **Cambio de Rol en Caliente:** El sistema debe permitir que el Encargado de Tienda o el Apoyo introduzcan una clave rápida o PIN en la misma terminal para autorizar tareas administrativas (como mermas) sin necesidad de cerrar por completo la sesión de venta de la cajera.
 *   **Restricción de Interfaces:** Las opciones de modificación crítica de inventario o aprobación de bajas deben estar protegidas visualmente detrás de una confirmación de credenciales en el mismo equipo.
 
 ### RNF-04 · Usabilidad en Mostrador Único
+*   **Compatibilidad Nativa con Periféricos:** La barra de búsqueda express debe mantener el enfoque (*focus*) automático del cursor para recibir las lecturas del escáner de códigos de barras sin necesidad de hacer clic previo en la pantalla.
 *   **Interfaz de Alta Densidad:** La pantalla de Consulta Express debe mostrar toda la matriz de existencias (Talla, Color y Estante Almacén) en una sola vista compacta para que el vendedor de piso pueda leer la información de un vistazo rápido por encima del mostrador.
-*   **Operación 100% por Teclado:** El sistema debe permitir la consulta express mediante atajos de teclado y escaneo directo, minimizando el uso del mouse para agilizar el flujo de trabajo compartido.
+*   **Operación Sin Mouse:** El sistema debe configurarse para operar fluidamente combinando el escáner de códigos y atajos de teclado, minimizando el uso del mouse para agilizar el flujo de trabajo compartido.
 
 ---
 
@@ -134,24 +135,24 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ### CU-01 · Consultar Disponibilidad Matricial en Caja Única
 *   **Actores:** Cajera Principal / Personal de Ventas / Apoyo de Caja
-*   **Precondición:** El Personal de Ventas o Apoyo se acerca al mostrador con el código o la prenda física. La terminal única está en modo de espera o consulta.
+*   **Precondición:** El Personal de Ventas o Apoyo se acerca al mostrador con la prenda física. La terminal única está en el módulo de consulta express con el cursor listo en la barra de búsqueda.
 *   **Flujo principal:**
-    1. La cajera (o el personal autorizado en ese momento) escanea el código de barras o digita el código corto de la prenda en la barra de búsqueda express.
-    2. El sistema procesa la solicitud de inmediato contra las tablas indexadas de Supabase.
+    1. El usuario pasa la prenda por el escáner de códigos de barras de la caja.
+    2. El sistema detecta el código de barras e interroga de inmediato a las tablas indexadas de Supabase.
     3. El sistema despliega en la pantalla del mostrador la cuadrícula con las combinaciones de Talla y Color disponibles junto a su ubicación física exacta en el almacén trasero.
     4. El personal de ventas visualiza la información y regresa al piso a atender al cliente.
-*   **Postcondición:** Existencias y ubicación expuestas en la pantalla única.
-*   **Flujo alternativo (Stock Cero):** Si el código consultado no cuenta con existencias, el sistema sombrea el registro en rojo y bloquea el procesamiento de venta para erradicar el cruce manual de códigos defectuosos.
+*   **Postcondición:** Existencias y ubicación expuestas en la pantalla única tras la lectura del periférico.
+*   **Flujo alternativo (Stock Cero):** Si la variante escaneada no cuenta con existencias, el sistema somete el registro a un sombreado rojo y bloquea el procesamiento de venta para erradicar el cruce manual de códigos defectuosos.
 
 ### CU-02 · Pre-registro de Incidencias en Mostrador
 *   **Actores:** Apoyo de Caja / Cajera Principal
 *   **Precondición:** Se detecta una prenda fallada durante el proceso de pago o el personal de ventas la trae desde el piso por una falla visible.
 *   **Flujo principal:**
     1. Aprovechando un espacio entre clientes, el usuario abre el formulario rápido de "Reporte de Incidencia" en la terminal única.
-    2. Escanea el código de barras de la prenda dañada y selecciona la Talla y el Color específicos.
+    2. Pasa la prenda defectuosa por el escáner de códigos de barras; el sistema auto-completa el código y la descripción, exigiendo solo seleccionar la Talla y el Color específicos.
     3. Selecciona el tipo de desperfecto (ej. "Roto de origen", "Manchado").
-    4. El sistema guarda temporalmente la prenda con estado "En Verificación", restándola inmediatamente de la matriz vendible.
-*   **Postcondición:** Prenda inhabilitada en el inventario desde la pantalla común.
+    4. El sistema guarda la prenda en estado "En Verificación", restándola inmediatamente de la matriz vendible.
+*   **Postcondición:** Prenda inhabilitada en el inventario desde la pantalla común mediante entrada por escáner.
 
 ### CU-03 · Aprobación y Cierre de Mermas
 *   **Actor:** Encargado de Tienda
@@ -167,26 +168,27 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ## 6. Historias de Usuario
 
-### HU-01 · Consulta Instantánea para Evitar Colas en Caja Única
-> Como **cajera de la tienda**, quiero que el motor de búsqueda devuelva el stock matricial por código en menos de un segundo, para poder dictar la información al vendedor de piso sin detener el flujo de cobro ni generar colas de clientes.
+### HU-01 · Consulta Instantánea por Escáner en Caja Única
+> Como **cajera de la tienda**, quiero que la barra de búsqueda procese las lecturas del escáner de códigos de barras instantáneamente, para poder dictar el stock matricial al vendedor de piso con un solo "pistoleo" sin interrumpir la digitación del cobro actual.
 
 *   **Criterios de aceptación:**
-    *   [ ] La consulta se activa inmediatamente al escanear el código de barras en la barra superior.
-    *   [ ] Muestra en una sola pantalla compacta el estante físico y las unidades disponibles por variante.
+    *   [ ] El campo de búsqueda express mantiene el foco activo para recibir lecturas de código de barras en cualquier momento.
+    *   [ ] Muestra en una sola pantalla compacta el estante físico y las unidades disponibles por variante en menos de medio segundo.
     *   [ ] Cuenta con un botón de escape rápido (Esc) que borra la consulta y devuelve la pantalla al estado de venta.
 
 ### HU-02 · Consulta Remota a través del Mostrador
-> Como **personal de ventas**, quiero acercarme a la caja única con el código de la prenda y ver claramente desde mi posición la matriz de tallas en pantalla, para confirmar al cliente si tengo stock en almacén sin entorpecer el espacio de la cajera.
+> Como **personal de ventas**, quiero acercarme a la caja, escanear el código de la prenda directamente y ver claramente desde mi posición la matriz de tallas en pantalla, para confirmar al cliente si tengo stock en almacén sin entorpecer el espacio de la cajera.
 
 *   **Criterios de aceptación:**
-    *   [ ] Los números de stock y letras de las ubicaciones (ej. STANTE A) utilizan una tipografía de gran tamaño y alto contraste para leerse a distancia.
+    *   [ ] Los números de stock y letras de las ubicaciones (ej. STANTE A) utilizan una tipografía de gran tamaño y alto contraste para leerse a distancia del mostrador.
     *   [ ] El sistema resalta visualmente en color verde las variantes con stock disponible y en rojo opaco las variantes agotadas.
 
-### HU-03 · Aislamiento Rápido de Prendas Rechazadas
-> Como **apoyo de caja**, quiero que el formulario de incidencias de la terminal sea directo y corto, para poder sacar del inventario una prenda con fallas que el cliente rechazó en el mostrador en menos de tres pasos.
+### HU-03 · Aislamiento por Escáner de Prendas Rechazadas
+> Como **apoyo de caja**, quiero registrar una prenda fallada pasando su código por el escáner de barras en el formulario de incidencias, para autocompletar sus datos básicos y sacarla del inventario vendible en segundos.
 
 *   **Criterios de aceptación:**
     *   [ ] El formulario aparece superpuesto sin necesidad de cerrar la pestaña principal de venta.
+    *   [ ] La lectura del escáner rellena automáticamente el ID del producto y restringe las opciones a sus variantes físicas.
     *   [ ] Al guardar la incidencia, la variante queda bloqueada para la venta en el sistema de manera inmediata.
 
 ### HU-04 · Auditoría de Turno en Terminal Compartida
