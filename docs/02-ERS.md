@@ -10,7 +10,7 @@
 ## 1. Introducción
 
 ### 1.1 Propósito
-Este documento especifica los requisitos funcionales y no funcionales del sistema SIGAL-LF para Tiendas "La Fábrica" — Sucursal Huancayo. Está dirigido al equipo de desarrollo (Grupo [Número]) y al cliente (Encargado de Tienda de la sucursal).
+Este documento especifica los requisitos funcionales y no funcionales del sistema SIGAL-LF para Tiendas "La Fábrica" — Sucursal Huancayo. Está dirigido al equipo de desarrollo y al cliente (Encargado de Tienda de la sucursal).
 
 ### 1.2 Ámbito del Sistema
 El sistema se denomina **SIGAL-LF** y cubre la recepción de mercadería en fardos masivos, el control de inventario matricial, la consulta express en el mostrador de caja y el reporte de mermas e incidencias de fábrica. No cubre módulos de RRHH (planillas o asistencia), créditos o préstamos a clientes, ni integración con sistemas de compras de proveedores externos.
@@ -185,9 +185,9 @@ SIGAL-LF
 | Los requisitos están priorizados |  | Los atributos de calidad indispensables del sistema están marcados con el símbolo ★. |
 | Trazabilidad a necesidades del cliente |  | El mapeo se encuentra completamente estructurado en la matriz de la Sección 7. |
 
-**Revisores:** [Tu Nombre / Integrantes del Grupo]  
+**Revisores:** Alexandra Cuchula - José Moori 
 **Fecha de revisión:** Julio 2026  
 **Resultado:**   Aprobado sin observaciones críticas  
 
 ---
-*ERS v1.0 — Grupo [Número] · UPLA · MDS 2026-I*
+*ERS v1.0 · UPLA · MDS 2026-I*
