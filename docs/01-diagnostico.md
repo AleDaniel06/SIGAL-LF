@@ -24,35 +24,54 @@ El flujo operativo de inventario en la sucursal Huancayo está desarticulado y p
 | **Búsqueda y Control de Inventario** | El sistema no muestra talla, color ni ubicación de las prendas. La búsqueda es manual y los registros de contingencia provocan diferencias en los inventarios y pérdidas económicas.                  |
 
 ### Flujo Representativo
-TIENDA                         SEDE CENTRAL
-
-Recepción
-     │
-     ▼
-Conteo manual
-     │
-     ▼
-Registro en Excel
-     │
-     ├──────────────► Recepción del archivo
-     │                       │
-     │                       ▼
-     │              Actualización del sistema
-     │                       │
-     ◄───────────────────────┘
-     │
-     ▼
-Venta del producto
-     │
-     ▼
-¿Stock actualizado?
-   │             │
- Sí│             │No
-   ▼             ▼
-Venta normal   Código sustituto
-                    │
-                    ▼
-         Descuadre de inventario
+                 ┌──────────────┐
+                 │   INICIO     │
+                 └──────┬───────┘
+                        │
+                        ▼
+           ┌────────────────────────┐
+           │ Recepción de           │
+           │ mercadería             │
+           └──────────┬─────────────┘
+                      │
+                      ▼
+           ┌────────────────────────┐
+           │ Conteo e inspección    │
+           │ manual                 │
+           └──────────┬─────────────┘
+                      │
+                      ▼
+           ┌────────────────────────┐
+           │ Registro en Excel      │
+           └──────────┬─────────────┘
+                      │
+                      ▼
+           ┌────────────────────────┐
+           │ Envío a sede central   │
+           └──────────┬─────────────┘
+                      │
+                      ▼
+           ┌────────────────────────┐
+           │ Actualización del      │
+           │ sistema                │
+           └──────────┬─────────────┘
+                      │
+                      ▼
+              ◇ ¿Stock actualizado? ◇
+                 /                 \
+               Sí                   No
+               │                     │
+               ▼                     ▼
+      ┌──────────────┐      ┌─────────────────┐
+      │ Venta normal │      │ Código alterno │
+      └──────┬───────┘      └────────┬────────┘
+             │                       │
+             └───────────┬───────────┘
+                         ▼
+          ┌─────────────────────────────┐
+          │ Descuadre de inventario y   │
+          │ pérdidas económicas         │
+          └─────────────────────────────┘
 
 ## 2. Sistema Actual — Procesamiento Manual y Excel Asíncrono
 
