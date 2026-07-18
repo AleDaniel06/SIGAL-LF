@@ -25,7 +25,7 @@ El flujo operativo de inventario en la sucursal Huancayo está desarticulado y p
 
 ### Flujo Representativo
                  ┌──────────────┐
-                 │   INICIO     │
+                 │   PROCESO    │
                  └──────┬───────┘
                         │
                         ▼
@@ -75,8 +75,13 @@ El flujo operativo de inventario en la sucursal Huancayo está desarticulado y p
 
 ## 2. Sistema Actual — Procesamiento Manual y Excel Asíncrono
 
-La sucursal Huancayo opera actualmente bajo un esquema híbrido y desarticulado[cite: 2]. La mercadería física se recibe en fardos masivos y se procesa de forma manual[cite: 2]. El control lógico se apoya en el envío diferido de archivos de Microsoft Excel hacia la central administrativa vía correo electrónico[cite: 2].
-
+El flujo operativo de inventario en la sucursal Huancayo está desarticulado y presenta etapas críticas que evidencian ineficiencias:  
+| **Etapa / Proceso**                  | **Descripción (resumida)**                                                                                                                                                                            |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Recepción y Control de Calidad**   | La mercadería llega en fardos con guía física. El personal realiza el conteo y la inspección de forma manual, generando demoras y posibles errores.                                                   |
+| **Procesamiento (Excel)**            | La cajera registra el inventario en Excel y lo envía por correo a la sede central para su actualización. Durante ese tiempo, los productos permanecen con **stock 0** en el sistema.                  |
+| **Venta de Contingencia**            | Cuando un producto no está actualizado en el sistema, se vende utilizando el código de otro artículo con el mismo precio, ocasionando inconsistencias en el inventario y posibles descuadres de caja. |
+| **Búsqueda y Control de Inventario** | El sistema no muestra talla, color ni ubicación de las prendas. La búsqueda es manual y los registros de contingencia provocan diferencias en los inventarios y pérdidas económicas.                  |
 ### Descripción técnica del sistema actual
 
 [ Recepción de Fardos ] ──>(Conteo Manual Pieza por Pieza)
