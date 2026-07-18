@@ -33,26 +33,23 @@ El sistema se denomina **SIGAL-LF** y cubre la recepción de mercadería en fard
 SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel locales enviadas por correo. A diferencia de su predecesor, la aplicación web se conecta directamente a una base de datos relacional centralizada en la nube, garantizando que el stock de prendas (desglosado por talla y color) esté disponible para la caja de forma inmediata tras su recepción física en el almacén local.
 
 ### 2.2 Funciones Principales
+flowchart LR
 
-                            ```mermaid
-flowchart TD
+    A["SELLA SIGAL-LF"]
 
-    A["SELLA SIGAL-LF<br/>Arquitectura de Componentes"]
-
-    A --> B["Módulo Caja<br/>(Web Frontend)"]
-    A --> C["Módulo Administrativo Local<br/>(Dashboard Web)"]
+    A --> B["Módulo Caja"]
+    A --> C["Módulo Administrativo"]
     A --> D["Persistencia de Datos"]
 
-    B --> B1["Consulta Express de Stock"]
-    B --> B2["Validación Matricial de Existencias"]
-    B --> B3["Alerta de Bloqueo por Stock Cero"]
+    B --> B1["Consulta Express"]
+    B --> B2["Validación"]
+    B --> B3["Alerta"]
 
-    C --> C1["Recepción y Conteo de Fardos"]
-    C --> C2["Auditoría de Inventario por Ubicación"]
-    C --> C3["Registro y Aprobación de Mermas"]
+    C --> C1["Recepción"]
+    C --> C2["Auditoría"]
+    C --> C3["Mermas"]
 
-    D --> D1["Base de Datos Cloud<br/>(Supabase)"]
-```
+    D --> D1["Supabase"]
 
                            
 ### 2.3 Usuarios del Sistema
