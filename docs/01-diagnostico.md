@@ -14,6 +14,59 @@ Grupo: 01 · Metodología de Desarrollo de Software · V Semestre 2026-I
 | **Soporte TI**      | No cuenta con un área ni personal de soporte TI.                                                                   |
 | **Operación**       | El proyecto se centra en optimizar los procesos de Caja y Almacén de la sucursal.                                       |
 
+### 1.1 Descripción del Proceso Actual
+El flujo operativo de inventario en la sucursal Huancayo está desarticulado y presenta etapas críticas que evidencian ineficiencias:
+| **Etapa / Proceso**                  | **Descripción (resumida)**                                                                                                                                                                            |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Recepción y Control de Calidad**   | La mercadería llega en fardos con guía física. El personal realiza el conteo y la inspección de forma manual, generando demoras y posibles errores.                                                   |
+| **Procesamiento (Excel)**            | La cajera registra el inventario en Excel y lo envía por correo a la sede central para su actualización. Durante ese tiempo, los productos permanecen con **stock 0** en el sistema.                  |
+| **Venta de Contingencia**            | Cuando un producto no está actualizado en el sistema, se vende utilizando el código de otro artículo con el mismo precio, ocasionando inconsistencias en el inventario y posibles descuadres de caja. |
+| **Búsqueda y Control de Inventario** | El sistema no muestra talla, color ni ubicación de las prendas. La búsqueda es manual y los registros de contingencia provocan diferencias en los inventarios y pérdidas económicas.                  |
+
+### Flujo Representativo
+┌───────────────────────────┐
+│ Recepción de mercadería   │
+│ (Marvisur)                │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Conteo y revisión manual  │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Registro en Excel         │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Envío a sede central      │
+│ (Correo electrónico)      │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Actualización del sistema │
+│ (con demora)              │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Stock = 0 en la sucursal  │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Venta con códigos         │
+│ sustitutos                │
+└──────────────┬────────────┘
+               │
+               ▼
+┌───────────────────────────┐
+│ Descuadres de inventario  │
+│ y pérdidas económicas     │
+└───────────────────────────┘
 
 ## 2. Sistema Actual — Procesamiento Manual y Excel Asíncrono
 
