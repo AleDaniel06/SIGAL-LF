@@ -34,22 +34,28 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ### 2.2 Funciones Principales
 flowchart LR
-
-    A["SELLA SIGAL-LF"]
-
-    A --> B["Módulo Caja"]
-    A --> C["Módulo Administrativo"]
-    A --> D["Persistencia de Datos"]
-
-    B --> B1["Consulta Express"]
-    B --> B2["Validación"]
-    B --> B3["Alerta"]
-
-    C --> C1["Recepción"]
-    C --> C2["Auditoría"]
-    C --> C3["Mermas"]
-
-    D --> D1["Supabase"]
+```text
++------------------------------+
+|        SELLA SIGAL-LF        |
++------------------------------+
+              |
+     +--------+--------+
+     |                 |
+     |                 |
++-----------+    +----------------+
+|   Caja    |    | Administrativo |
++-----------+    +----------------+
+| Consulta  |    | Recepción      |
+| Validación|    | Auditoría      |
+| Alertas   |    | Mermas         |
++-----------+    +----------------+
+        \            /
+         \          /
+          \        /
+           +-------------------+
+           |     Supabase      |
+           +-------------------+
+```
 
                            
 ### 2.3 Usuarios del Sistema
