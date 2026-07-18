@@ -27,6 +27,9 @@ Este patrón de conexión directa a servicios backend distribuidos (*Backend-as-
 
 ## 2. Diagrama de Arquitectura
 
+## 2. Diagrama de Arquitectura
+
+```text
 +-----------------------------------------------------------------------+
 |                      TIENDA FÍSICA "LA FÁBRICA"                       |
 |                                                                       |
@@ -43,9 +46,9 @@ Este patrón de conexión directa a servicios backend distribuidos (*Backend-as-
 |  |                                                                 |  |
 |  +-----------------------------------------------------------------+  |
 +-----------------------------------------------------------------------+
-│
-│ HTTPS / TLS 1.3 (Internet)
-▼
+                                   │
+                                   │ HTTPS / TLS 1.3 (Internet)
+                                   ▼
 +-----------------------------------------------------------------------+
 |                           ENTORNO NUBE                                |
 |                                                                       |
@@ -54,8 +57,8 @@ Este patrón de conexión directa a servicios backend distribuidos (*Backend-as-
 |  |  • Autenticación y Roles de Usuario (Supabase Auth)              |  |
 |  +------------------------------------------------------------------+  |
 +-----------------------------------------------------------------------+
-
 ---
+```
 
 ## 3. Stack Tecnológico
 
@@ -136,26 +139,25 @@ CREATE INDEX idx_inventario_variante ON inventario_matricial(producto_id, talla,
 ### 5.1 Flujo de Consulta Express por Escáner
 
 [El Vendedor llega a Caja con Prenda]
-│
-▼
-Lectura de Código con Escáner
-│
-▼
-¿El cursor está enfocado en la barra?
-├── NO ──> El sistema auto-enfoca dinámicamente mediante JS
-└── SÍ ──> Captura la cadena de texto de barra
-│
-▼
-Consulta Indexada a Supabase (≤ 0.5s)
-│
-▼
+                 │
+                 ▼
+     Lectura de Código con Escáner
+                 │
+                 ▼
+ ¿El cursor está enfocado en la barra?
+     ├── NO ──> El sistema auto-enfoca dinámicamente mediante JS
+     └── SÍ ──> Captura la cadena de texto de barra
+                 │
+                 ▼
+   Consulta Indexada a Supabase (≤ 0.5s)
+                 │
+                 ▼
 Despliegue de Matriz en Pantalla de Caja
-• Verde: Stock Disponible + Ubicación de Estante
-• Rojo: Agotado (Bloqueo de botón de venta)
-│
-▼
+  • Verde: Stock Disponible + Ubicación de Estante
+  • Rojo: Agotado (Bloqueo de botón de venta)
+                 │
+                 ▼
 [Tecla ESC] ──> Limpia Pantalla y Regresa a Modo Venta
-
 ---
 
 ## 6. Alcance del Prototipo Académico
