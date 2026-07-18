@@ -34,17 +34,27 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ### 2.2 Funciones Principales
 
-SIGAL-LF
-├── Módulo Caja (Web Frontend)
-│   ├── Consulta Express de Stock
-│   ├── Validación Matricial de Existencias
-│   └── Alerta de Bloqueo por Stock Cero
-├── Módulo Administrativo Local (Dashboard Web)
-│   ├── Recepción y Conteo de Fardos
-│   ├── Auditoría de Inventario por Ubicación
-│   └── Registro y Aprobación de Mermas
-└── Persistencia de Datos
-└── Base de Datos Cloud (Supabase)
+                     SELLA SIGAL-LF
+             Arquitectura de Componentes
+             
+┌────────────────────────┐     ┌────────────────────────────┐
+│      Módulo Caja       │     │ Módulo Administrativo      │
+│     (Web Frontend)     │     │    Local (Dashboard)       │
+├────────────────────────┤     ├────────────────────────────┤
+│ • Consulta Express     │     │ • Recepción de Fardos      │
+│ • Validación de Stock  │     │ • Auditoría de Inventario  │
+│ • Alerta Stock Cero    │     │ • Registro de Mermas       │
+└─────────────┬──────────┘     └─────────────┬──────────────┘
+              │                              │
+              └───────────────┬──────────────┘
+                              │
+                              ▼
+                 ┌─────────────────────────┐
+                 │ Persistencia de Datos   │
+                 ├─────────────────────────┤
+                 │ Base de Datos Cloud     │
+                 │        Supabase         │
+                 └─────────────────────────┘
 
 ### 2.3 Usuarios del Sistema
 
