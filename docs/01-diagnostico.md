@@ -1,7 +1,7 @@
 # 01 · Diagnóstico Organizacional — Tiendas "La Fábrica"
 
 Proyecto: Sistema SELLA SIGAL-LF
-Grupo: 01 · Metodología de Desarrollo de Software · V Semestre 2026-I
+Metodología de Desarrollo de Software · V Semestre 2026-I
 
 | **Atributo**        | **Detalle**                                                                                                             |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -138,4 +138,4 @@ El nuevo sistema **SIGAL-LF** no busca replicar el flujo administrativo externo 
 *   Aplicación móvil nativa para clientes finales.
 
 ---
-*Documento elaborado por Grupo [Número] — UPLA · MDS 2026-I*
+* UPLA · MDS 2026-I*
