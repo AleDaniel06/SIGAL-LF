@@ -34,7 +34,7 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ### 2.2 Funciones Principales
    ```text
-AQUÍ VA EL DIAGRAMA
+
  
                  
                  ┌────────────────────┐
