@@ -9,7 +9,8 @@ Sistema web diseñado para la gestión, control matricial (tallas/colores) y opt
 ## 👥 Equipo de Desarrollo
 * **Alexandra Cuchula** — Product Owner Proxy / Analista de Negocio
 * **José Moori** — Scrum Master / Arquitecto Técnico
-
+* **Isabel Hurtado** — Ingeniera de Software / Aseguramiento de Calidad (QA)
+  
 ## 🛠️ Stack Tecnológico Previsto
 * **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
 * **Backend:** Node.js, Express
