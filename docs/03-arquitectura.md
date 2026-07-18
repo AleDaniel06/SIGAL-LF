@@ -138,6 +138,7 @@ CREATE INDEX idx_inventario_variante ON inventario_matricial(producto_id, talla,
 
 ### 5.1 Flujo de Consulta Express por Escáner
 
+```text
 [El Vendedor llega a Caja con Prenda]
                  │
                  ▼
@@ -158,6 +159,9 @@ Despliegue de Matriz en Pantalla de Caja
                  │
                  ▼
 [Tecla ESC] ──> Limpia Pantalla y Regresa a Modo Venta
+
+```
+
 ---
 
 ## 6. Alcance del Prototipo Académico
