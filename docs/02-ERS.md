@@ -214,12 +214,12 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 | Criterio | ¿Cumple? | Observación |
 | :--- | :--- | :--- |
-| Los requisitos son verificables | [X] Sí | Cada requisito funcional cuenta con flujos definidos, precondiciones y resultados comprobables mediante la interfaz de la caja única. |
-| Los requisitos no son ambiguos | [X] Sí | Se eliminaron ambigüedades técnicas; el comportamiento de la Consulta Express y el uso del escáner de códigos de barras están detallados con precisión. |
-| Los requisitos son completos | [X] Sí | Cubre integralmente el ciclo de la tienda: recepción de fardos, control matricial (Talla/Color), venta/consulta en mostrador único y flujo de mermas. |
-| Los requisitos son consistentes | [X] Sí | No hay conflictos de concurrencia al mapear una sola terminal física. Los roles (Cajera, Ventas, Apoyo) operan bajo restricciones claras en el mismo equipo. |
-| Los requisitos están priorizados | [X] Sí | Los atributos de calidad críticos e indispensables para la operación de la caja (Disponibilidad, Velocidad con Escáner) están marcados con el símbolo ★. |
-| Trazabilidad a necesidades del cliente | [X] Sí | Se garantiza la correspondencia directa entre las necesidades de control local de "La Fábrica" y las funcionalidades especificadas en este documento. |
+| Los requisitos son verificables |  Sí | Cada requisito funcional cuenta con flujos definidos, precondiciones y resultados comprobables mediante la interfaz de la caja única. |
+| Los requisitos no son ambiguos |  Sí | Se eliminaron ambigüedades técnicas; el comportamiento de la Consulta Express y el uso del escáner de códigos de barras están detallados con precisión. |
+| Los requisitos son completos |  Sí | Cubre integralmente el ciclo de la tienda: recepción de fardos, control matricial (Talla/Color), venta/consulta en mostrador único y flujo de mermas. |
+| Los requisitos son consistentes |  Sí | No hay conflictos de concurrencia al mapear una sola terminal física. Los roles (Cajera, Ventas, Apoyo) operan bajo restricciones claras en el mismo equipo. |
+| Los requisitos están priorizados |  Sí | Los atributos de calidad críticos e indispensables para la operación de la caja (Disponibilidad, Velocidad con Escáner) están marcados con el símbolo ★. |
+| Trazabilidad a necesidades del cliente |  Sí | Se garantiza la correspondencia directa entre las necesidades de control local de "La Fábrica" y las funcionalidades especificadas en este documento. |
 
 **Revisor:**Alexandra Cuchula  
 **Fecha de revisión:** Julio 2026  
