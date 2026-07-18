@@ -2,8 +2,8 @@
 
 **Proyecto:** Sistema Integrado de Gestión de Almacén e Inventario — Tiendas "La Fábrica"  
 **Versión:** 1.0 · Julio 2026  
-**Autor:** José Moori(Arquitecto)  
-**Revisor:** Isabel  
+**Autor:** José Moori (Arquitecto)  
+**Revisor:** Isabel Hurtado  
 
 ---
 
@@ -89,7 +89,6 @@ Al operar con una terminal única, una SPA web en JavaScript Vanilla ofrece el r
 **Costo total del stack: S/. 0.00**
 
 ---
-
 ## 4. Diseño de Base de Datos
 
 ### 4.1 Supabase — Esquema Relacional Matricial
@@ -125,36 +124,60 @@ CREATE TABLE mermas_registro (
     autorizado_por VARCHAR(50),
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+```sql
 -- Índices optimizados para la velocidad del escáner de códigos de barras
 CREATE INDEX idx_productos_codigo ON productos(codigo_barra);
 CREATE INDEX idx_inventario_variante ON inventario_matricial(producto_id, talla, color);
 
----
+## 5. Lógica Operativa en Terminal Única
 
-5. Lógica Operativa en Terminal Única
-5.1 Flujo de Consulta Express por Escáner
+### 5.1 Flujo de Consulta Express por Escáner
 
 [El Vendedor llega a Caja con Prenda]
-                 │
-                 ▼
-     Lectura de Código con Escáner
-                 │
-                 ▼
- ¿El cursor está enfocado en la barra?
-     ├── NO ──> El sistema auto-enfoca dinámicamente mediante JS
-     └── SÍ ──> Captura la cadena de texto de barra
-                 │
-                 ▼
-   Consulta Indexada a Supabase (≤ 0.5s)
-                 │
-                 ▼
+│
+▼
+Lectura de Código con Escáner
+│
+▼
+¿El cursor está enfocado en la barra?
+├── NO ──> El sistema auto-enfoca dinámicamente mediante JS
+└── SÍ ──> Captura la cadena de texto de barra
+│
+▼
+Consulta Indexada a Supabase (≤ 0.5s)
+│
+▼
 Despliegue de Matriz en Pantalla de Caja
-  • Verde: Stock Disponible + Ubicación de Estante
-  • Rojo: Agotado (Bloqueo de botón de venta)
-                 │
-                 ▼
+• Verde: Stock Disponible + Ubicación de Estante
+• Rojo: Agotado (Bloqueo de botón de venta)
+│
+▼
 [Tecla ESC] ──> Limpia Pantalla y Regresa a Modo Venta
 
-6. Alcance del Prototipo AcadémicoPara la entrega académica se construye el flujo completo integrado en la terminal única que demuestra el ciclo:Escaneo de Prenda en Mostrador ──> Visualización Matricial ──> Registro de Incidencia de Falla ──> Validación del Encargado
-Al ser una sucursal con una sola caja, el alcance web cubre la interfaz unificada con cambio rápido de rol de usuario mediante código PIN sin pérdida de estado en la pestaña del navegador.7. Walkthrough SQA2 — Revisión de ArquitecturaCriterio¿Cumple?ObservaciónLa arquitectura resuelve el problema raíz identificado[X] SíCentraliza e introduce el escáner de códigos de barras, solucionando las demoras en caja y el cruce manual.El stack es justificado técnicamente[X] SíSe justifica la eliminación de frameworks para mantener la agilidad de carga en el terminal fijo.Los diagramas son consistentes entre sí[X] SíEl diagrama de bloques se alinea con la base de datos distribuida en Supabase.El motor de búsqueda maneja casos de error[X] SíSi el stock matricial da cero, la interfaz inhabilita la adición del producto.El alcance académico es realista[X] SíEl prototipo funcional de caja única cubre el 100% de la operatividad física de la sucursal.Revisores: José (autor) · Isabel (revisor)Resultado: [X] AprobadoDocumento de Arquitectura v1.0 — Grupo [Número] · UPLA · MDS 2026-I
+---
+
+## 6. Alcance del Prototipo Académico
+
+Para la entrega académica se construye el flujo completo integrado en la terminal única que demuestra el ciclo:
+
+Escaneo de Prenda en Mostrador ──> Visualización Matricial ──> Registro de Incidencia de Falla ──> Validación del Encargado
+
+Al ser una sucursal con una sola caja, el alcance web cubre la interfaz unificada con cambio rápido de rol de usuario mediante código PIN sin pérdida de estado en la pestaña del navegador.
+
+---
+
+## 7. Walkthrough SQA2 — Revisión de Arquitectura
+
+| Criterio | ¿Cumple? | Observación |
+| :--- | :--- | :--- |
+| La arquitectura resuelve el problema raíz identificado | [X] Sí | Centraliza e introduce el escáner de códigos de barras, solucionando las demoras en caja y el cruce manual. |
+| El stack es justificado técnicamente | [X] Sí | Se justifica la eliminación de frameworks para mantener la agilidad de carga en el terminal fijo. |
+| Los diagramas son consistentes entre sí | [X] Sí | El diagrama de bloques se alinea con la base de datos distribuida en Supabase. |
+| El motor de búsqueda maneja casos de error | [X] Sí | Si el stock matricial da cero, la interfaz inhabilita la adición del producto. |
+| El alcance académico es realista | [X] Sí | El prototipo funcional de caja única cubre el 100% de la operatividad física de la sucursal. |
+
+**Revisores:** José Moori(autor) · Isabel Hurtado(revisor)  
+**Resultado:** [X] Aprobado  
+
+---
+*Documento de Arquitectura v1.0 · UPLA · MDS 2026-I*
