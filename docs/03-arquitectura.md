@@ -127,7 +127,9 @@ CREATE TABLE mermas_registro (
 
 -- Índices optimizados para la velocidad del escáner de códigos de barras
 CREATE INDEX idx_productos_codigo ON productos(codigo_barra);
-CREATE INDEX idx_inventario_variante ON inventario_matricial(producto_id, talla, color);```
+CREATE INDEX idx_inventario_variante ON inventario_matricial(producto_id, talla, color);
+
+```
 
 ## 5. Lógica Operativa en Terminal Única
 
