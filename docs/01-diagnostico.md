@@ -83,13 +83,13 @@ Este es el problema raíz. El proceso actual genera una brecha temporal severa e
 
 ### 3.2 Problemas Derivados
 
-| ID | Problema | Impacto |
+| ID | Problema en la Tienda | Impacto Real en el Negocio |
 | :--- | :--- | :--- |
-| **P1** | Recepción crítica asíncrona de fardos (Marvisur) | Cuellos de botella operativos y conteo ineficiente de fallas de fábrica. |
-| **P2** | Latencia de actualización de stock en central | Productos físicos retenidos en piso con stock lógico cero en sistema. |
-| **P3** | Práctica de venta por contingencia (Cruce de códigos) | Pérdida absoluta de la integridad y fidelidad de los registros de inventario. |
-| **P4** | Ausencia de desglose matricial (Talla, Color, Ubicación) | Búsqueda a ciegas en tienda e incapacidad de auditoría rápida. |
-| **P5** | Sanciones económicas injustificadas al personal | Clima laboral adverso y alta rotación de trabajadores por pago de descuadres. |
+| **P1** | La mercadería llega en fardos gigantes y se cuenta manualmente. | Se pierde demasiado tiempo y es muy fácil que no se noten las prendas que vinieron falladas de fábrica. |
+| **P2** | El stock real tarda horas (o días) en aparecer en el sistema porque depende de un Excel enviado por correo. | Hay ropa lista en la tienda para ser vendida, pero la caja no la puede pasar porque en el sistema figura con "stock cero". |
+| **P3** | Para no perder la venta, la cajera escanea el código de otra prenda que cuesta lo mismo. | El sistema se vuelve una locura: empieza a marcar que se vendieron cosas que siguen en el estante y viceversa. |
+| **P4** | El sistema actual no muestra si la prenda es talla S, M o L, ni su color o en qué estante está. | El personal busca "a ciegas" en el almacén, haciendo perder tiempo al cliente y generando colas en la caja. |
+| **P5** | Los inventarios finales nunca cuadran y el personal debe pagar los faltantes de su propio bolsillo. | El equipo trabaja desmotivado, hay un clima de desconfianza y los empleados terminan renunciando rápido. |
 
 ### 3.3 Análisis de Causa Raíz
 Aplicando el modelo de contexto socio-técnico (Sommerville, 2011):
