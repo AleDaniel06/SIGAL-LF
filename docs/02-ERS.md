@@ -1,8 +1,8 @@
 # 02 · Especificación de Requisitos de Software (ERS v1.0)
 
-**Proyecto:** Sistema Integrado de Gestión de Almacén e Inventario — Tiendas "La Fábrica"
-**Estándar:** IEEE 830 adaptado
-**Versión:** 1.0 · Julio 2026
+**Proyecto:** Sistema Integrado de Gestión de Almacén e Inventario — Tiendas "La Fábrica"  
+**Estándar:** IEEE 830 adaptado  
+**Versión:** 1.0 · Julio 2026  
 **Estado:** Validado con cliente  
 
 ---
