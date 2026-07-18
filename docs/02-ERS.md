@@ -201,12 +201,12 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ## 7. Matriz de Trazabilidad
 
-| Requisito Alto Nivel | Req. Funcional | Req. No Funcional | Historia de Usuario |
+| Requisito Alto Nivel | Req. Funcional (RF) | Req. No Funcional (RNF) | Historia de Usuario (HU) |
 | :--- | :--- | :--- | :--- |
-| **RAN-01** (Validación de fardos) | RF-01 | RNF-01 | — |
-| **RAN-02** (Control matricial) | RF-02 | RNF-01, RNF-05 | HU-01 |
-| **RAN-03** (Consulta express) | RF-03 | RNF-02, RNF-04 | HU-01 |
-| **RAN-04** (Reporte de mermas) | RF-04 | RNF-03 | HU-02 |
+| **RAN-01** (Gestión de Fardos) | RF-01 (Recepción Guiada) | RNF-01 (Persistencia Local) | — |
+| **RAN-02** (Control Matricial) | RF-02 (Inventario Matricial) | RNF-04 (Interfaz Densidad) | HU-02 (Consulta en Piso) |
+| **RAN-03** (Consulta en Mostrador) | RF-03 (Consulta Express) | RNF-02 (Velocidad Escáner)<br>RNF-04 (Foco Automático) | HU-01 (Evitar Colas)<br>HU-02 (Consulta en Piso) |
+| **RAN-04** (Control de Mermas) | RF-04 (Registro Mermas) | RNF-03 (PIN Administrativo) | HU-03 (Aislamiento Rápido)<br>HU-04 (Auditoría Turno) |
 
 ---
 
