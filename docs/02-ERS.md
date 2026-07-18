@@ -214,16 +214,16 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 | Criterio | ¿Cumple? | Observación |
 | :--- | :--- | :--- |
-| Los requisitos son verificables |  | Cada requerimiento funcional cuenta con flujos definidos y resultados comprobables. |
-| Los requisitos no son ambiguos |  | Los conceptos operativos clave han sido definidos con precisión en la Sección 1.3. |
-| Los requisitos son completos |  | Cubre integralmente el flujo de almacén, caja y control de mermas de la tienda. |
-| Los requisitos son consistentes |  | No existen contradicciones operativas entre las funciones de la caja y los privilegios de administración. |
-| Los requisitos están priorizados |  | Los atributos de calidad indispensables del sistema están marcados con el símbolo ★. |
-| Trazabilidad a necesidades del cliente |  | El mapeo se encuentra completamente estructurado en la matriz de la Sección 7. |
+| Los requisitos son verificables | [X] Sí | Cada requisito funcional cuenta con flujos definidos, precondiciones y resultados comprobables mediante la interfaz de la caja única. |
+| Los requisitos no son ambiguos | [X] Sí | Se eliminaron ambigüedades técnicas; el comportamiento de la Consulta Express y el uso del escáner de códigos de barras están detallados con precisión. |
+| Los requisitos son completos | [X] Sí | Cubre integralmente el ciclo de la tienda: recepción de fardos, control matricial (Talla/Color), venta/consulta en mostrador único y flujo de mermas. |
+| Los requisitos son consistentes | [X] Sí | No hay conflictos de concurrencia al mapear una sola terminal física. Los roles (Cajera, Ventas, Apoyo) operan bajo restricciones claras en el mismo equipo. |
+| Los requisitos están priorizados | [X] Sí | Los atributos de calidad críticos e indispensables para la operación de la caja (Disponibilidad, Velocidad con Escáner) están marcados con el símbolo ★. |
+| Trazabilidad a necesidades del cliente | [X] Sí | Se garantiza la correspondencia directa entre las necesidades de control local de "La Fábrica" y las funcionalidades especificadas en este documento. |
 
-**Revisores:** Alexandra Cuchula - José Moori 
+**Revisor:**Alexandra Cuchula  
 **Fecha de revisión:** Julio 2026  
-**Resultado:**   Aprobado sin observaciones críticas  
+**Resultado:** Aprobado sin observaciones críticas  
 
 ---
 *ERS v1.0 · UPLA · MDS 2026-I*
