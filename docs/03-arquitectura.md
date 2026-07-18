@@ -180,13 +180,13 @@ Al ser una sucursal con una sola caja, el alcance web cubre la interfaz unificad
 | Criterio | ¿Cumple? | Observación |
 | :--- | :--- | :--- |
 | La arquitectura resuelve el problema raíz identificado | [X] Sí | Centraliza e introduce el escáner de códigos de barras, solucionando las demoras en caja y el cruce manual. |
-| El stack es justificado técnicamente | [X] Sí | Se justifica la eliminación de frameworks para mantener la agilidad de carga en el terminal fijo. |
-| Los diagramas son consistentes entre sí | [X] Sí | El diagrama de bloques se alinea con la base de datos distribuida en Supabase. |
-| El motor de búsqueda maneja casos de error | [X] Sí | Si el stock matricial da cero, la interfaz inhabilita la adición del producto. |
-| El alcance académico es realista | [X] Sí | El prototipo funcional de caja única cubre el 100% de la operatividad física de la sucursal. |
+| El stack es justificado técnicamente | Sí | Se justifica la eliminación de frameworks para mantener la agilidad de carga en el terminal fijo. |
+| Los diagramas son consistentes entre sí | Sí | El diagrama de bloques se alinea con la base de datos distribuida en Supabase. |
+| El motor de búsqueda maneja casos de error | Sí | Si el stock matricial da cero, la interfaz inhabilita la adición del producto. |
+| El alcance académico es realista | Sí | El prototipo funcional de caja única cubre el 100% de la operatividad física de la sucursal. |
 
 **Revisores:** José Moori(autor) · Isabel Hurtado(revisor)  
-**Resultado:** [X] Aprobado  
+**Resultado:** Aprobado  
 
 ---
 *Documento de Arquitectura v1.0 · UPLA · MDS 2026-I*
