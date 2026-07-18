@@ -24,40 +24,39 @@ El flujo operativo de inventario en la sucursal Huancayo está desarticulado y p
 | **Búsqueda y Control de Inventario** | El sistema no muestra talla, color ni ubicación de las prendas. La búsqueda es manual y los registros de contingencia provocan diferencias en los inventarios y pérdidas económicas.                  |
 
 ### Flujo Representativo
-                    SISTEMA ACTUAL
-
-     Recepción de mercadería (Marvisur)
-                  │
-                  ▼
-     Conteo y revisión manual de prendas
-                  │
-                  ▼
-      Registro de existencias en Excel
-                  │
-                  ▼
-      Envío del archivo por correo
-          a la sede central
-                  │
-                  ▼
-    Ingeniero TI actualiza el sistema
-        (horas o días después)
-                  │
-         ┌────────┴────────┐
-         │                 │
-         ▼                 ▼
-  Stock aparece en      Stock actualizado
-      "0"                  tardíamente
-         │
-         ▼
-  Venta mediante códigos
-      de otras prendas
-         │
-         ▼
- Descuadre de inventario
-         │
-         ▼
- Inventarios incorrectos
- y pérdidas económicas
+ ┌─────────────────────┐
+│ Recepción de        │
+│ mercadería          │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│ Conteo e inspección │
+│ manual              │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│ Registro en Excel   │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│ Envío a la          │
+│ sede central        │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│ Actualización       │
+│ del sistema         │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────────────────────────────┐
+│ Stock = 0 → Venta con códigos cruzados      │
+│ → Descuadre de inventario y caja            │
+└─────────────────────────────────────────────┘
 
 ## 2. Sistema Actual — Procesamiento Manual y Excel Asíncrono
 
