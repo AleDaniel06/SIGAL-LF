@@ -34,28 +34,27 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ### 2.2 Funciones Principales
 
-                     SELLA SIGAL-LF
-             Arquitectura de Componentes
-             
-┌────────────────────────┐     ┌────────────────────────────┐
-│      Módulo Caja       │     │ Módulo Administrativo      │
-│     (Web Frontend)     │     │    Local (Dashboard)       │
-├────────────────────────┤     ├────────────────────────────┤
-│ • Consulta Express     │     │ • Recepción de Fardos      │
-│ • Validación de Stock  │     │ • Auditoría de Inventario  │
-│ • Alerta Stock Cero    │     │ • Registro de Mermas       │
-└─────────────┬──────────┘     └─────────────┬──────────────┘
-              │                              │
-              └───────────────┬──────────────┘
-                              │
-                              ▼
-                 ┌─────────────────────────┐
-                 │ Persistencia de Datos   │
-                 ├─────────────────────────┤
-                 │ Base de Datos Cloud     │
-                 │        Supabase         │
-                 └─────────────────────────┘
+                            ```mermaid
+flowchart TD
 
+    A["SELLA SIGAL-LF<br/>Arquitectura de Componentes"]
+
+    A --> B["Módulo Caja<br/>(Web Frontend)"]
+    A --> C["Módulo Administrativo Local<br/>(Dashboard Web)"]
+    A --> D["Persistencia de Datos"]
+
+    B --> B1["Consulta Express de Stock"]
+    B --> B2["Validación Matricial de Existencias"]
+    B --> B3["Alerta de Bloqueo por Stock Cero"]
+
+    C --> C1["Recepción y Conteo de Fardos"]
+    C --> C2["Auditoría de Inventario por Ubicación"]
+    C --> C3["Registro y Aprobación de Mermas"]
+
+    D --> D1["Base de Datos Cloud<br/>(Supabase)"]
+```
+
+                           
 ### 2.3 Usuarios del Sistema
 
 | Rol | Descripción | Módulo que usa |
