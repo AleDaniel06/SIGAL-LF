@@ -138,4 +138,4 @@ El nuevo sistema **SIGAL-LF** no busca replicar el flujo administrativo externo 
 *   Aplicación móvil nativa para clientes finales.
 
 ---
-* UPLA · MDS 2026-I*
+* UPLA · MDS 2026-I  *
