@@ -1,4 +1,4 @@
-01 · Diagnóstico Organizacional — La Fábrica
+### 01 · Diagnóstico Organizacional — La Fábrica
 
 Proyecto: Sistema SELLA SIGAL-LF
 Grupo: 01 · Metodología de Desarrollo de Software · V Semestre 2026-I
@@ -24,39 +24,35 @@ El flujo operativo de inventario en la sucursal Huancayo está desarticulado y p
 | **Búsqueda y Control de Inventario** | El sistema no muestra talla, color ni ubicación de las prendas. La búsqueda es manual y los registros de contingencia provocan diferencias en los inventarios y pérdidas económicas.                  |
 
 ### Flujo Representativo
- ┌─────────────────────┐
-│ Recepción de        │
-│ mercadería          │
-└─────────┬───────────┘
-          │
-          ▼
-┌─────────────────────┐
-│ Conteo e inspección │
-│ manual              │
-└─────────┬───────────┘
-          │
-          ▼
-┌─────────────────────┐
-│ Registro en Excel   │
-└─────────┬───────────┘
-          │
-          ▼
-┌─────────────────────┐
-│ Envío a la          │
-│ sede central        │
-└─────────┬───────────┘
-          │
-          ▼
-┌─────────────────────┐
-│ Actualización       │
-│ del sistema         │
-└─────────┬───────────┘
-          │
-          ▼
-┌─────────────────────────────────────────────┐
-│ Stock = 0 → Venta con códigos cruzados      │
-│ → Descuadre de inventario y caja            │
-└─────────────────────────────────────────────┘
+TIENDA                         SEDE CENTRAL
+
+Recepción
+     │
+     ▼
+Conteo manual
+     │
+     ▼
+Registro en Excel
+     │
+     ├──────────────► Recepción del archivo
+     │                       │
+     │                       ▼
+     │              Actualización del sistema
+     │                       │
+     ◄───────────────────────┘
+     │
+     ▼
+Venta del producto
+     │
+     ▼
+¿Stock actualizado?
+   │             │
+ Sí│             │No
+   ▼             ▼
+Venta normal   Código sustituto
+                    │
+                    ▼
+         Descuadre de inventario
 
 ## 2. Sistema Actual — Procesamiento Manual y Excel Asíncrono
 
