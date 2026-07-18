@@ -110,31 +110,23 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
     4. El sistema descuenta la unidad y genera un comprobante de auditoría no modificable.
 
 ---
-
 ## 4. Requisitos No Funcionales
 
-### RNF-01 · Confiabilidad y Consistencia ★ CRÍTICA
-*   **Disponibilidad del Sistema:** El acceso a la plataforma web en los mostradores de atención debe garantizar un tiempo de actividad $\ge 99.5\%$ en el horario comercial de la tienda.
-*   **Aislamiento de Transacciones:** El sistema debe implementar bloqueos optimistas en la base de datos (Supabase) para evitar que dos terminales descuenten simultáneamente la misma unidad física de una prenda si solo queda una (1) en stock matricial.
-*   **Persistencia Garantizada:** En caso de una desconexión abrupta del navegador, los datos de las mermas en proceso de registro no deben quedar en estados inconsistentes o duplicados en el servidor.
+### RNF-01 · Confiabilidad y Disponibilidad ★ CRÍTICA
+*   **Disponibilidad del Sistema:** Al contar la sucursal con **una sola caja**, el acceso a la plataforma web en dicho mostrador es un punto único de fallo; debe garantizar un tiempo de actividad $\ge 99.9\%$ en horario comercial.
+*   **Persistencia Local Temporal:** El sistema debe asegurar que, ante microcortes de internet en la terminal única, no se pierdan los datos del fardo o la merma que se estén digitando en ese instante.
 
 ### RNF-02 · Eficiencia de Desempeño ★ CRÍTICA
-*   **Velocidad de Búsqueda:** El motor de Consulta Express debe procesar las solicitudes y renderizar la cuadrícula de tallas/colores en $\le 1.5$ segundos bajo una carga de hasta 10 usuarios concurrentes en la red local.
-*   **Optimización de Carga:** El procesamiento de reportes analíticos pesados de mermas e inventario debe ejecutarse en segundo plano mediante llamadas asíncronas, evitando congelar el flujo operativo de la interfaz de caja.
+*   **Velocidad de Respuesta:** El motor de Consulta Express en la caja única debe procesar y renderizar la cuadrícula de tallas/colores en $\le 1.0$ segundo para evitar embotellamientos en el único punto de despacho.
+*   **Ligereza de Carga:** La comunicación con Supabase debe estar optimizada mediante consultas indexadas para no saturar el ancho de banda de la tienda.
 
-### RNF-03 · Seguridad ★ CRÍTICA
-*   **Control de Accesos (RBAC):** El sistema debe impedir estrictamente que los roles de Personal de Ventas y Apoyo de Caja accedan a las funciones de aprobación de mermas o alteración manual de stock físico.
-*   **Cifrado:** Toda la comunicación entre los clientes web y el backend en la nube se realizará obligatoriamente bajo el protocolo HTTPS utilizando TLS 1.3.
-*   **Resguardo de Credenciales:** Las contraseñas de todos los usuarios se almacenarán en la base de datos aplicando un hash seguro con sal (algoritmo bcrypt).
+### RNF-03 · Seguridad
+*   **Control de Roles en Terminal Única:** El sistema debe permitir el cambio rápido de sesión (Cajera Principal, Apoyo de Caja, Encargado) en la misma terminal, aplicando restricciones estrictas según el rol activo.
+*   **Protección de Rutas:** El Personal de Ventas y Apoyo de Caja tienen prohibido el acceso al módulo de aprobación definitiva de mermas, incluso si la sesión se queda abierta en la caja.
 
-### RNF-04 · Usabilidad y Ergonomía
-*   **Regla de los 3 Clics:** El personal de apoyo o caja debe poder localizar la ubicación exacta de cualquier variante matricial (Talla/Color) en un máximo de 3 interacciones a partir de la pantalla principal.
-*   **Diseño Responsivo:** La interfaz del buscador express debe estar optimizada para pantallas táctiles de terminales de punto de venta y dispositivos móviles (tablets/smartphones) usados por el personal en el piso de venta.
-*   **Claridad Visual:** El sistema debe utilizar alertas de color de alto contraste (ej. Rojo para stock cero) legibles para evitar confusiones operativas en horas punta.
-
-### RNF-05 · Mantenibilidad
-*   **Trazabilidad del Código:** Todo cambio en la lógica del sistema debe gestionarse mediante Pull Requests validados en GitHub.
-*   **Auditoría de Datos:** El esquema de base de datos debe registrar automáticamente la fecha, hora y ID del usuario que realice cualquier modificación sobre las tablas de inventario y mermas.
+### RNF-04 · Usabilidad
+*   **Operación Express:** El cajero o su apoyo deben localizar la ubicación y stock de cualquier prenda en un máximo de 2 clics o un solo escaneo desde la pantalla principal.
+*   **Diseño Adaptable:** La interfaz debe ser intuitiva y de alto contraste, optimizada para la pantalla fija del mostrador y para dispositivos de consulta rápida en el piso de venta.
 
 ---
 
@@ -142,70 +134,68 @@ SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel
 
 ### CU-01 · Consultar Disponibilidad Matricial (Buscador Express)
 *   **Actores:** Cajera Principal / Apoyo de Caja / Personal de Ventas
-*   **Precondición:** El usuario cuenta con una sesión activa en el sistema desde cualquier terminal de la tienda.
+*   **Precondición:** Terminal de caja única o dispositivo de piso con sesión activa.
 *   **Flujo principal:**
-    1. El usuario escanea el código de barras o digita la descripción de la prenda en la barra de búsqueda express.
-    2. El sistema procesa la solicitud en las tablas indexadas de Supabase.
-    3. El sistema despliega de forma inmediata la matriz con todas las combinaciones de Talla y Color existentes.
-    4. El sistema resalta la ubicación física exacta (Almacén, Estante, Fila) del artículo seleccionado.
-*   **Postcondición:** El stock y la ubicación de la prenda quedan expuestos en la pantalla del usuario.
-*   **Flujo alternativo (Stock Agotado):** Si la variante consultada tiene stock igual a cero (0), el sistema sombrea el registro en color rojo y bloquea el botón de confirmación para impedir que se use ese código de barras en una transacción ficticia (cruce de códigos).
+    1. El usuario escanea el código o digita la prenda en la barra de búsqueda express.
+    2. El sistema consulta la base de datos en la nube.
+    3. El sistema despliega la matriz de Tallas y Colores con su ubicación exacta (ej: "Estante B-Fila 2").
+*   **Postcondición:** Existencias visualizadas en pantalla.
+*   **Flujo alternativo (Stock Cero):** Si la variante seleccionada está agotada, el sistema bloquea el botón de venta en la terminal para erradicar el cruce manual de códigos.
 
-### CU-02 · Registrar Prenda Fallada en Piso de Venta
-*   **Actores:** Personal de Ventas / Apoyo de Caja
-*   **Precondición:** El trabajador identifica una prenda con daño físico o defecto en el piso de exhibición.
+### CU-02 · Pre-registro de Incidencias en Mostrador o Piso
+*   **Actores:** Apoyo de Caja / Personal de Ventas
+*   **Precondición:** Identificación de una prenda fallada devuelta por un cliente en caja o detectada en exhibición.
 *   **Flujo principal:**
-    1. El usuario accede al formulario simplificado de "Reporte de Incidencia".
-    2. Escanea el código de barras de la prenda seleccionando la Talla y el Color observados.
-    3. Describe brevemente el desperfecto visualizado (ej. "Mancha de tinte", "Costura suelta").
-    4. El sistema guarda el registro con estado "Pendiente de Revisión" y notifica visualmente al Administrador.
-*   **Postcondición:** La prenda queda pre-registrada en el sistema, a la espera de la validación del Encargado de Tienda para su descuento definitivo como merma.
+    1. El usuario abre el formulario rápido de "Reporte de Incidencia".
+    2. Escanea el código de barras y selecciona la combinación de Talla y Color afectada.
+    3. Registra el desperfecto observable (ej: "Mancha", "Salida de costura").
+    4. El sistema guarda la prenda en estado "Bloqueado por Revisión" para sacarla del stock vendible.
+*   **Postcondición:** Prenda inhabilitada temporalmente en la matriz de inventario.
 
-### CU-03 · Registrar Baja por Merma (Aprobación)
+### CU-03 · Aprobación Definitiva de Merma
 *   **Actor:** Encargado de Tienda
-*   **Precondición:** Existen prendas retenidas o reportadas con fallas pendientes de validación.
+*   **Precondición:** Existencia de prendas pre-registradas como incidencias.
 *   **Flujo principal:**
-    1. El encargado ingresa al panel administrativo de mermas y revisa las incidencias enviadas por el personal de piso.
-    2. Verifica físicamente el estado de la prenda dañada.
-    3. Confirma la baja del producto seleccionando la opción "Aprobar Merma".
-    4. El sistema descuenta de forma irreversible la unidad de la tabla de stock matricial.
-*   **Postcondición:** El inventario se actualiza y el sistema genera un registro de auditoría con el ID del encargado.
+    1. El encargado inicia sesión en el panel administrativo (desde la terminal de caja o su oficina).
+    2. Revisa y convalida físicamente las prendas retenidas por el personal de apoyo o ventas.
+    3. Presiona "Confirmar Baja por Merma".
+    4. El sistema descuenta de forma irreversible la unidad del inventario y genera el registro de auditoría.
+*   **Postcondición:** Stock matricial actualizado permanentemente.
 
 ---
 
 ## 6. Historias de Usuario
 
-### HU-01 · Búsqueda Express de Variantes
-> Como **cajera de la tienda**, quiero buscar una prenda filtrando por su talla y color en tiempo real, para responder rápidamente al cliente en el mostrador y agilizar las filas.
+### HU-01 · Búsqueda Express en Caja Única
+> Como **cajera de la tienda**, quiero que el buscador filtre prendas por talla y color instantáneamente en mi terminal, para no generar colas ni retrasos al ser la única caja disponible.
 
 *   **Criterios de aceptación:**
-    *   [ ] El motor de búsqueda filtra simultáneamente por código de barras, descripción y color.
-    *   [ ] La cuadrícula de resultados muestra la ubicación física exacta del producto en el almacén.
-    *   [ ] La pantalla refresca los datos de stock al instante sin requerir la recarga del sitio web completo.
+    *   [ ] Búsqueda simultánea por código de barras o texto descriptivo en menos de un segundo.
+    *   [ ] Visualización clara de la ubicación física en el almacén trasero o estantes.
+    *   [ ] Bloqueo visual inmediato del botón de adición si el stock matricial de la variante es 0.
 
-### HU-02 · Verificación de Existencias en Piso de Exhibición
-> Como **personal de ventas**, quiero consultar la disponibilidad de una talla específica desde mi terminal de piso, para confirmar de inmediato al cliente si tenemos la prenda en almacén sin necesidad de abandonar la zona de atención.
-
-*   **Criterios de aceptación:**
-    *   [ ] La interfaz se adapta correctamente a la pantalla de la terminal de piso o dispositivo móvil.
-    *   [ ] El sistema muestra por separado el stock disponible en exhibición y el stock guardado en el almacén trasero.
-    *   [ ] Si la prenda no está en la sucursal, el sistema muestra un mensaje claro indicando "Sin existencias locales".
-
-### HU-03 · Reporte Rápido de Prendas Dañadas
-> Como **apoyo de caja**, quiero pre-registrar las prendas que los clientes devuelven en el mostrador por fallas de fábrica, para apartarlas del inventario vendible y enviarlas a revisión administrativa.
+### HU-02 · Agilización de Atención en Piso
+> Como **personal de ventas**, quiero consultar el stock matricial desde mi pantalla de apoyo, para asegurarle al cliente si la prenda está disponible en almacén sin tener que interrumpir la operación de la caja principal.
 
 *   **Criterios de aceptación:**
-    *   [ ] El formulario de reporte requiere un máximo de 2 datos obligatorios: combinación matricial y motivo del descarte.
-    *   [ ] Al guardar, el sistema cambia el estado de la prenda a "Inhabilitado para venta" de forma automática.
-    *   [ ] El sistema emite un ticket digital de confirmación del reporte para control interno del turno.
+    *   [ ] Interfaz de solo lectura que muestra la matriz completa de existencias por sucursal.
+    *   [ ] Actualización de datos sincronizada con los movimientos de la caja única.
 
-### HU-04 · Resguardo Analítico de Mermas
-> Como **encargado de tienda**, quiero revisar y aprobar formalmente las mermas reportadas por el personal, para sustentar legalmente los descuadres ante la administración central de "La Fábrica".
+### HU-03 · Retención de Prendas Defuctuosas
+> Como **apoyo de caja**, quiero registrar rápidamente en el sistema una prenda que el cliente rechazó por falla al momento del pago, para apartarla físicamente y evitar que se intente vender por error nuevamente.
 
 *   **Criterios de aceptación:**
-    *   [ ] El panel administrativo muestra un listado ordenado cronológicamente con todas las pre-mermas enviadas por el personal de apoyo y ventas.
-    *   [ ] Cada aprobación genera un registro histórico inmutable que asocia el ID del encargado, la fecha y la prenda eliminada del stock.
-    *   [ ] Incluye una opción para exportar la lista de bajas mensuales directamente a un formato PDF estandarizado.
+    *   [ ] Formulario directo de dos pasos: escanear variante y seleccionar tipo de falla.
+    *   [ ] El sistema descuenta temporalmente la pieza del stock disponible bajo el estado "En Verificación".
+
+### HU-04 · Auditoría de Bajas Locales
+> Como **encargado de tienda**, quiero validar y firmar digitalmente las mermas acumuladas en el turno, para enviar el reporte limpio a la central de "La Fábrica" y justificar los descuadres del inventario.
+
+*   **Criterios de aceptación:**
+    *   [ ] Bandeja de entrada que agrupa las incidencias reportadas por el personal de apoyo y piso.
+    *   [ ] Generación de un archivo PDF de auditoría no modificable con fecha, hora y usuario del encargado.
+
+---
 
 ## 7. Matriz de Trazabilidad
 
