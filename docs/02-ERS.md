@@ -33,26 +33,35 @@ El sistema se denomina **SIGAL-LF** y cubre la recepción de mercadería en fard
 SIGAL-LF es un sistema nuevo que reemplaza el flujo desarticulado de hojas Excel locales enviadas por correo. A diferencia de su predecesor, la aplicación web se conecta directamente a una base de datos relacional centralizada en la nube, garantizando que el stock de prendas (desglosado por talla y color) esté disponible para la caja de forma inmediata tras su recepción física en el almacén local.
 
 ### 2.2 Funciones Principales
-flowchart LR
+   ```text
+AQUÍ VA EL DIAGRAMA
+ 
+                 
+                 ┌────────────────────┐
+                 │      SIGAL-LF      │
+                 └─────────┬──────────┘
+                           │
+          ┌────────────────┴────────────────┐
+          │                                 │
+          ▼                                 ▼
+ ┌──────────────────┐              ┌──────────────────┐
+ │   Módulo Caja    │              │ Módulo Admin.    │
+ └────────┬─────────┘              └────────┬─────────┘
+          │                                 │
+          ▼                                 ▼
+ Consulta Express                 Recepción de Fardos
+ Validación Stock                 Auditoría Inventario
+ Alerta Stock Cero                Registro de Mermas
+          │                                 │
+          └──────────────┬──────────────────┘
+                         ▼
+              ┌──────────────────────┐
+              │  Base de Datos Cloud │
+              │      Supabase        │
+              └──────────────────────┘
 
-    subgraph Caja["Módulo Caja (Web Frontend)"]
-        C1["Consulta Express de Stock"]
-        C2["Validación Matricial de Existencias"]
-        C3["Alerta por Stock Cero"]
-    end
+``` 
 
-    subgraph Admin["Módulo Administrativo (Dashboard Web)"]
-        A1["Recepción y Conteo de Fardos"]
-        A2["Auditoría de Inventario"]
-        A3["Registro de Mermas"]
-    end
-
-    subgraph DB["Persistencia de Datos"]
-        D1["Supabase"]
-    end
-
-    Caja --> DB
-    Admin --> DB         
 ### 2.3 Usuarios del Sistema
 
 | Rol | Descripción | Módulo que usa |
