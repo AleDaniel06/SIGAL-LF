@@ -1,4 +1,4 @@
-### 01 · Diagnóstico Organizacional — La Fábrica
+# 01 · Diagnóstico Organizacional — Tiendas "La Fábrica"
 
 Proyecto: Sistema SELLA SIGAL-LF
 Grupo: 01 · Metodología de Desarrollo de Software · V Semestre 2026-I
@@ -14,7 +14,7 @@ Grupo: 01 · Metodología de Desarrollo de Software · V Semestre 2026-I
 | **Soporte TI**      | No cuenta con un área ni personal de soporte TI.                                                                   |
 | **Operación**       | El proyecto se centra en optimizar los procesos de Caja y Almacén de la sucursal.                                       |
 
-### Sistema Actual — Procesamiento Manual y Excel Asíncrono
+## 2. Sistema Actual — Procesamiento Manual y Excel Asíncrono
 El flujo operativo de inventario en la sucursal Huancayo está desarticulado y presenta etapas críticas que evidencian ineficiencias:
 | **Etapa / Proceso**                  | **Descripción (resumida)**                                                                                                                                                                            |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
