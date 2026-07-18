@@ -168,8 +168,9 @@ Despliegue de Matriz en Pantalla de Caja
 
 Para la entrega académica se construye el flujo completo integrado en la terminal única que demuestra el ciclo:
 
+```text
 Escaneo de Prenda en Mostrador ──> Visualización Matricial ──> Registro de Incidencia de Falla ──> Validación del Encargado
-
+```
 Al ser una sucursal con una sola caja, el alcance web cubre la interfaz unificada con cambio rápido de rol de usuario mediante código PIN sin pérdida de estado en la pestaña del navegador.
 
 ---
