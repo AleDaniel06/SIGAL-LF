@@ -1,10 +1,9 @@
-# 03 · Arquitectura Técnica — Sistema SIGAL-LF
+# 03 · Arquitectura Técnica — Sistema "La Fábrica"
 
-**Proyecto:** Sistema Integrado de Gestión de Almacén e Inventario en Tienda "La Fábrica" — Sucursal Huancayo
-**Versión:** 1.0 · Julio 2026
-**Autor:** Moori Zegarra José (Arquitecto)
-**Documento de Arquitectura** v1.0 — Grupo 01 · UPLA · MDS 2026-I
-
+**Proyecto:** Sistema Integrado de Gestión de Almacén e Inventario — Tiendas "La Fábrica"  
+**Versión:** 1.0 · Julio 2026  
+**Autor:** José Moori (Arquitecto)  
+**Revisor:** Isabel Hurtado
 ---
 
 ## 1. Decisión Arquitectónica
