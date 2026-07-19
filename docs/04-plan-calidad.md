@@ -95,6 +95,7 @@ El sistema maneja información de precios comerciales, códigos de barras y regi
 Aplicando la **Regla 1-10-100** (Pressman, 2020):  
 Detectar un defecto en requisitos cuesta 1 unidad. En desarrollo cuesta 10. En producción cuesta 100.
 
+```text
 PREVENCIÓN (40%)                  DETECCIÓN (45%)                  CORRECCIÓN (15%)
 ┌──────────────────────────────┐  ┌──────────────────────────────┐  ┌──────────────────────────────┐
 │ SQA1: Revisión ERS           │  │ SQA3: Análisis Estático      │  │ Corrección de bugs           │
@@ -102,3 +103,73 @@ PREVENCIÓN (40%)                  DETECCIÓN (45%)                  CORRECCIÓN
 │ Definición de DoD            │  │ SQA5: Pruebas de Aceptación  │  │                              │
 │ Estándares de Codificación   │  │ SQA6: Pruebas de Rendimiento │  │                              │
 └──────────────────────────────┘  └──────────────────────────────┘  └──────────────────────────────┘
+```
+**Justificación:** La mayor inversión está en prevención y detección temprana porque el costo de corregir en producción (con descuadres reales que afectan directamente el sueldo del personal de mostrador) es inaceptable. Además, el plazo acotado de 13 semanas académicas no tolera correcciones tardías de arquitectura.
+
+---
+
+## 3. Plan SQA — Actividades Shift Left
+
+"Shift Left" significa mover las actividades de calidad hacia el inicio del proceso de software, antes de que los defectos se encarezcan en el entorno real de la tienda.
+
+| ID | Actividad | Fase | ¿Shift Left? | Responsable | Herramienta |
+| :--- | :--- | :--- | :---: | :--- | :--- |
+| **SQA1** | Revisión ERS con checklist IEEE 830 | Análisis (Sprint 0) | Sí | Alexandra Cuchula | Checklist en doc `02-ERS.md` |
+| **SQA2** | Walkthrough de arquitectura y modelo de datos (DER) | Diseño (Sprint 0-1) | Sí | José Moori + Alexandra | Revisión presencial + diagramas |
+| **SQA3** | Análisis estático en cada Pull Request | Construcción (Sprint 1-6) | Sí | Todos (automático) | SonarCloud + GitHub Actions |
+| **SQA4** | Code Review obligatorio en cada PR (mínimo 1 revisor) | Construcción (Sprint 1-6) | Sí | Todos (rotativo) | GitHub Pull Requests |
+| **SQA5** | Pruebas de aceptación en entorno real (PC de caja) | Despliegue (Sprint 6) | ⚠ PARCIAL | Ambos integrantes | Casos de prueba (doc 05) + PC física |
+| **SQA6** | Pruebas de rendimiento (consultas < 1.5s, consumo RAM) | Despliegue (Sprint 6) | ⚠ PARCIAL | José Moori | Network Panel + Task Manager |
+
+> ── **Nota sobre SQA5 y SQA6:** Son parcialmente Shift Left porque dependen de software funcional, pero se planifican desde el inicio (los casos de prueba están escritos antes del desarrollo en el documento `05-casos-de-prueba.md`).
+
+---
+
+## 4. Definition of Done (DoD)
+
+Cada historia de usuario se considera **Terminada** (Done) únicamente cuando cumple con **todos** los criterios siguientes:
+
+* [ ] Código revisado mediante Pull Request (mínimo 1 revisor aprobó).
+* [ ] SonarCloud no reporta issues nuevos de severidad *Critical* o *Blocker*.
+* [ ] Pruebas unitarias escritas con cobertura $\ge 70\%$ del módulo (Jest).
+* [ ] Criterios de aceptación de la historia verificados manualmente en entorno local.
+* [ ] Documentación actualizada en Swagger/OpenAPI si la historia modifica o añade endpoints.
+* [ ] Issue cerrada en GitHub Projects y movida a la columna de "Terminado".
+* [ ] Verificación de rendimiento en la PC de caja (consultas express $< 1.5$ segundos).
+
+**Sin DoD, "terminado" no tiene significado concreto.** Este checklist es el contrato de calidad del equipo SIGAL-LF.
+
+---
+
+## 5. Flujo de Calidad en GitHub Actions
+
+Cada vez que un integrante hace push a una rama de desarrollo o abre un Pull Request, se ejecuta automáticamente el pipeline de integración continua:
+
+```text
+Push / Pull Request
+        ↓
+[GitHub Actions Pipeline]
+  ├── 1. npm install (Instalación limpia de dependencias)
+  ├── 2. npm test (Ejecución de Jest → cobertura obligatoria ≥ 70%)
+  ├── 3. SonarCloud Scan (Análisis estático OWASP Top 10)
+  └── 4. npm audit (Verificación de vulnerabilidades en dependencias)
+        ↓
+   ¿Pasó todo?
+     ├── SÍ → El PR puede ser aprobado y mergeado a main
+     └── NO → El PR queda bloqueado automáticamente hasta corregir
+```
+Este flujo implementa SQA3 de forma automática sin intervención manual en cada integración.
+
+## 6. Métricas de Calidad Adicionales (Específicas para SIGAL-LF)
+
+| Métrica | Valor objetivo | Frecuencia de medición | Responsable |
+| :--- | :--- | :--- | :--- |
+| Tiempo de respuesta de consulta express | < 1.5 segundos | Cada Sprint | José Moori |
+| Consumo de RAM en PC de caja antigua | < 2.6 GB (65% del total) | Cada Sprint | José Moori |
+| Tasa de descuadres de inventario en tienda | 0% | Al final de cada Sprint | Alexandra Cuchula |
+| Cobertura de código (Unit Testing) | $\ge 70\%$ | En cada PR | SonarCloud (automático) |
+| Vulnerabilidades críticas OWASP detectadas | 0 | En cada PR | SonarCloud (automático) |
+| Tiempo de aprendizaje del sistema | < 15 minutos | Única (Sprint 6) | Prueba con cajera y apoyo |
+
+---
+*Plan de Calidad v1.0 — Proyecto SIGAL-LF · UPLA · MDS 2026-1*
