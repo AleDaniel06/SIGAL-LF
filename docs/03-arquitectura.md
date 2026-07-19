@@ -227,7 +227,7 @@ CREATE TABLE sync_ventas (
 
 ### 5.2 Flujo de recepción de fardos (Aumento de stock masivo)
 
-```text
+
 MÓDULO RECEPCIÓN (Recepción de fardos terrestres vía Marvisur)
 
 1. Llegada de carga terrestre -> Conteo físico y control de calidad por Apoyo de Caja.
@@ -239,7 +239,7 @@ MÓDULO RECEPCIÓN (Recepción de fardos terrestres vía Marvisur)
    - Incrementa 'stock_cantidad' en tabla 'inventario'.
    - Registra registro en 'movimientos' con tipo_movimiento = 'entrada' y motivo = 'Guía Marvisur'.
 7. Base de datos consolida cambios -> Stock disponible reflejado en mostrador inmediatamente.
-```
+
 ### 5.3 Manejo de conflictos
 
 *   **Operación en Caja Única:** Al contar la sucursal con una sola caja física en mostrador, se elimina el riesgo de colisión simultánea de ventas presenciales. Sin embargo, el uso de `SELECT FOR UPDATE` en PostgreSQL se mantiene activo en la API como una medida de diseño defensivo. Esto garantiza que si en el futuro se integra un canal de venta digital (E-commerce) o si se procesan ráfagas de sincronización asíncrona pendientes en la cola, el stock de la base de datos central conserve un aislamiento ACID estricto, impidiendo quiebres de stock virtuales.
