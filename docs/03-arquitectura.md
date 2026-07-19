@@ -252,8 +252,8 @@ MÓDULO RECEPCIÓN (Recepción de fardos terrestres vía Marvisur)
 ```
 ### 5.3 Manejo de conflictos
 
-*   **Concurrencia Simultánea en Mostrador:** Si dos cajas registran la venta de la última prenda idéntica al mismo milisegundo, PostgreSQL bloquea la fila mediante `SELECT FOR UPDATE`. La primera transacción evalúa, descuenta y hace `COMMIT`. La segunda transacción lee el nuevo valor de stock (0) y es rechazada limpiamente por lógica transaccional, evitando el quiebre de stock virtual.
-*   **Caída Crítica de Internet:** Si la red de la tienda falla, el frontend captura el error de conexión y almacena de forma estructurada los códigos vendidos localmente en `LocalStorage`. Al detectar el restablecimiento del enlace, envía el lote pendiente. El servidor procesa secuencialmente y valida duplicidad mediante llaves compuestas en la tabla de auditoría.
+*   **Operación en Caja Única:** Al contar la sucursal con una sola caja física en mostrador, se elimina el riesgo de colisión simultánea de ventas presenciales. Sin embargo, el uso de `SELECT FOR UPDATE` en PostgreSQL se mantiene activo en la API como una medida de diseño defensivo. Esto garantiza que si en el futuro se integra un canal de venta digital (E-commerce) o si se procesan ráfagas de sincronización asíncrona pendientes en la cola, el stock de la base de datos central conserve un aislamiento ACID estricto, impidiendo quiebres de stock virtuales.
+*   **Caída Crítica de Internet:** Si la red de la tienda falla, la caja no se detiene. El frontend SPA captura el error de conexión y almacena de forma estructurada los códigos vendidos localmente en el `LocalStorage` del navegador. Durante el periodo de desconexión, la interfaz opera en modo de contingencia utilizando los precios previamente congelados en el cliente. Al detectar el restablecimiento del enlace de internet, el sistema envía automáticamente el lote de transacciones acumuladas en segundo plano para que el servidor las procese de forma secuencial y ordenada.
 
 ---
 
