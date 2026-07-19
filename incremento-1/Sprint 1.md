@@ -23,8 +23,8 @@
 
 | Artefacto | Ubicación | Estado |
 | :--- | :--- | :---: |
-| Diagnóstico organizacional y análisis de contexto | [docs/01-diagnostico.md] | ✅ |
-| Especificación de Requisitos de Software (ERS) v1.0 | [docs/02-ERS.md] | ✅ |
+| Diagnóstico organizacional y análisis de contexto | (docs/01-diagnostico.md) | ✅ |
+| Especificación de Requisitos de Software (ERS) v1.0 | docs/02-ERS.md | ✅ |
 | Wireframes y prototipos UI (Figma) | [Ver en Figma →](https://www.figma.com/design/wLVkszBOGEBNrfOP21nKX3/Sistema-de-ventas-e-inventario--Community-?node-id=1-2&t=DdacM4M7ehPcY5Zx-1) | ✅ |
 | Script SQL de inicialización de tablas (`usuarios`, `prendas`, `inventario`) | [incremento-1/sql/init.sql] | ✅ |
 | Módulo de Autenticación (Login + RBAC) | [incremento-1/auth/] | ✅ |
