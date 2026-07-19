@@ -1,8 +1,8 @@
 # 05 · Casos de Prueba — SQA5 y SQA6
 
 **Proyecto:** Sistema Integrado de Gestión de Almacén e Inventario en Tienda "La Fábrica" - Sucursal Huancayo (SIGAL-LF)
-**Versión:** 1.0 · Julio 2026
-**Responsable:** Isabel Hurtado (QA)
+*Versión:* 1.0 · Julio 2026
+*Responsable:* Isabel Hurtado (QA)
 
 ---
 
