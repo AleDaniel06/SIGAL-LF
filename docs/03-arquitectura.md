@@ -284,5 +284,5 @@ El Producto Mínimo Viable para la entrega académica se acota a **1 terminal fu
 | La base de datos soporta la matriz multidimensional | ✅ | Tabla inventario indexa de forma compuesta las variables talla, color y ubicación |
 | El sistema respeta la restricción de hardware | ✅ | Arquitectura web ligera basada en JavaScript Vanilla sin sobrecarga de memoria RAM |
 
-**Revisores:** iSABEL Hurtado
+**Revisores:** Isabel Hurtado
 **Resultado:** ✅ Aprobado
