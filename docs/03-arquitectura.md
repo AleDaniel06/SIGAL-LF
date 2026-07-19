@@ -28,36 +28,37 @@ Este patrón de consumo centralizado mediante APIs ligeras con persistencia clou
 ## 2. Diagrama de Arquitectura
 
 ```text
-                SISTEMA SIGAL-LF
+                                  SISTEMA SIGAL-LF
 
-+-------------------------+
-| Cliente Web (Caja)      |
-| - Ventas                |
-| - Recepción             |
-| - Reportes              |
-+-----------+-------------+
-            |
-         HTTPS
-            |
-            v
-+-------------------------+
-| Backend API             |
-| Node.js + Express       |
-| - Validaciones          |
-| - Seguridad (JWT)       |
-| - Lógica del sistema    |
-+-----------+-------------+
-            |
-       PostgreSQL
-            |
-            v
-+-------------------------+
-| Base de Datos           |
-| PostgreSQL (Supabase)   |
-| - Inventario            |
-| - Usuarios              |
-| - Movimientos           |
-+-------------------------+
+
+                             +-------------------------+
+                             | Cliente Web (Caja)      |
+                             | - Ventas                |
+                             | - Recepción             |
+                             | - Reportes              |
+                             +-----------+-------------+
+                                         |
+                                      HTTPS
+                                         |
+                                         v
+                             +-------------------------+
+                             | Backend API             |
+                             | Node.js + Express       |
+                             | - Validaciones          |
+                             | - Seguridad (JWT)       |
+                             | - Lógica del sistema    |
+                             +-----------+-------------+
+                                         |
+                                    PostgreSQL
+                                         |
+                                         v
+                             +-------------------------+
+                             | Base de Datos           |
+                             | PostgreSQL (Supabase)   |
+                             | - Inventario            |
+                             | - Usuarios              |
+                             | - Movimientos           |
+                             +-------------------------+
 ```
 
 ### 3. Stack Tecnológico
