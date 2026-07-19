@@ -28,47 +28,27 @@ Este patrón de consumo centralizado mediante APIs ligeras con persistencia clou
 ## 2. Diagrama de Arquitectura
 
 ```text
-+---------------------------------------------------------------------------------------------------+
-|                                 CAPA DE CLIENTE (SUCURSAL TIENDA)                                 |
-|                                                                                                   |
-|   +-------------------------------------------------------------------------------------------+   |
-|   | CLIENTE WEB (Frontend SPA / Vanilla JS)                                                   |   |
-|   | ---------------------------------------                                                   |   |
-|   | - UI / Renderizado DOM / LocalStorage (Contingencia de precios congelados).              |   |
-|   | - Módulos: Ventas (Caja), Recepción (Fardos), Auditoría (Mermas) y Reportes.              |   |
-|   +-------------------------------------------+-----------------------------------------------+   |
-|                                               |                                                   |
-|                                               | HTTPS / JSON (TLS 1.3 / Puerto 443)               |
-|                                               v                                                   |
-+-----------------------------------------------|---------------------------------------------------+
-                                                |
-                                    WAN / Red Pública Internet
-                                                |
-                                                v
-+---------------------------------------------------------------------------------------------------+
-|                                 CAPA DE SERVICIOS (CLOUD INFRASTRUCTURE)                           |
-|                                                                                                   |
-|   +-------------------------------------------------------------------------------------------+   |
-|   | SERVIDOR DE APLICACIONES (API Backend RESTful - Render Cloud)                            |   |
-|   | Runtime: Node.js + Express.js                                                             |   |
-|   | ----------------------------                                                              |   |
-|   | - Endpoints / Router: Control de rutas (/api/v1/inventario, /api/v1/usuarios).            |   |
-|   | - Seguridad: Middleware JWT / Control de Accesos basado en Roles (RBAC).                  |   |
-|   | - Lógica: Validadores de matriz textil (Código -> Talla -> Color -> Ubicación).           |   |
-|   | - Persistencia: Prisma ORM (Abstracción y mapeo relacional).                              |   |
-|   +-------------------------------------------+-----------------------------------------------+   |
-|                                               |                                                   |
-|                                               | Driver PostgreSQL Nativo (Puerto 5432)            |
-|                                               v                                                   |
-|   +-------------------------------------------------------------------------------------------+   |
-|   | MOTOR DE BASE DE DATOS RELACIONAL (Supabase Cloud)                                        |   |
-|   | Engine: PostgreSQL v16.x                                                                  |   |
-|   | ------------------------                                                                  |   |
-|   | - Persistencia: Tablas normalizadas indexadas por códigos de barra.                       |   |
-|   | - Transaccionalidad: Aislamiento ACID contra quiebres de stock virtuales.                 |   |
-|   | - Concurrencia: Bloqueo selectivo de registros mediante FOR UPDATE.                       |   |
-|   +-------------------------------------------------------------------------------------------+   |
-+---------------------------------------------------------------------------------------------------+
++---------------------------+
+|      CLIENTE WEB          |
+| (Caja / Navegador Web)    |
++-------------+-------------+
+              |
+        HTTPS / JSON
+              |
+              v
++---------------------------+
+|     API BACKEND           |
+| Node.js + Express         |
+| (Render Cloud)            |
++-------------+-------------+
+              |
+         PostgreSQL
+              |
+              v
++---------------------------+
+|    BASE DE DATOS          |
+| PostgreSQL (Supabase)     |
++---------------------------+
 ```
 
 ### 3. Stack Tecnológico
