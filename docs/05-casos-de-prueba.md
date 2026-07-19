@@ -17,12 +17,12 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-01 |
 | **Historia de usuario** | HU-01 (Registro de recepción de fardos) |
 | **Requisito** | RF-02 (Recepción y Calidad Logística) |
-| **Módulo** | MOD-02[cite: 3] |
+| **Módulo** | MOD-02 |
 | **Precondición** | Usuario "apoyo" autenticado en el sistema |
 
 **Pasos:**
 
-1. Iniciar sesión en SIGAL-LF con credenciales de "Apoyo de Caja"[cite: 3].
+1. Iniciar sesión en SIGAL-LF con credenciales de "Apoyo de Caja".
 2. Ir al módulo de "Recepción de Carga".
 3. Escanear el código de barras de la prenda: `8801234567890`.
 4. El sistema debe mostrar el nombre de la prenda automáticamente (o permitir digitarlo si no existe).
@@ -53,12 +53,12 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-02 |
 | **Historia de usuario** | HU-02 (Consulta de stock matricial) |
 | **Requisito** | RF-03 (Control Transaccional y Stock Matricial) |
-| **Módulo** | MOD-03[cite: 3] |
+| **Módulo** | MOD-03 |
 | **Precondición** | CP-01 ejecutado exitosamente (stock de 100 unidades registrado) |
 
 **Pasos:**
 
-1. Iniciar sesión en SIGAL-LF con credenciales de "Cajera Principal"[cite: 3].
+1. Iniciar sesión en SIGAL-LF con credenciales de "Cajera Principal".
 2. Ir al módulo de "Consulta de Stock".
 3. Ingresar código de barras: `8801234567890`.
 4. Presionar **"Buscar"**.
@@ -71,7 +71,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
   * M: 100 unidades
   * L: 0 unidades
   * XL: 0 unidades
-* ✅ La ubicación "Almacén General" se muestra correctamente[cite: 3].
+* ✅ La ubicación "Almacén General" se muestra correctamente.
 * ✅ El tiempo de respuesta es ≤ 1.5 segundos.
 
 **Resultado real:** [completar al ejecutar]  
@@ -87,7 +87,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-03 |
 | **Historia de usuario** | HU-03 (Integración con punto de venta) |
 | **Requisito** | RF-06 (Sincronización con Sistema de Ventas) |
-| **Módulo** | MOD-03 (Integración)[cite: 3] |
+| **Módulo** | MOD-03 (Integración) |
 | **Precondición** | CP-01 ejecutado, stock de 100 unidades en "Camisa Roja M" |
 
 **Pasos:**
@@ -99,7 +99,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
    * Talla: `M`
    * Color: `Rojo`
    * Cantidad: `1`
-   * Ubicación: `Piso de Venta`[cite: 3]
+   * Ubicación: `Piso de Venta`
 4. Verificar la respuesta del servidor.
 5. Consultar el stock actualizado en SIGAL-LF.
 
@@ -108,7 +108,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 * ✅ Mensaje: "Stock actualizado exitosamente".
 * ✅ El stock de "Camisa Roja M" disminuye de 100 a 99 unidades.
 * ✅ El movimiento se registra en el historial como "venta".
-* ✅ La ubicación "Piso de Venta" muestra el decremento[cite: 3].
+* ✅ La ubicación "Piso de Venta" muestra el decremento.
 * ✅ El tiempo de respuesta es ≤ 1.5 segundos.
 
 **Resultado real:** [completar al ejecutar]  
@@ -124,24 +124,24 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-04 |
 | **Historia de usuario** | HU-04 (Registro de mermas y ajustes) |
 | **Requisito** | RF-06 (Auditoría de Mermas y Reportes) |
-| **Módulo** | MOD-05[cite: 3] |
+| **Módulo** | MOD-05 |
 | **Precondición** | Usuario "supervisor" autenticado, stock de 99 unidades en "Camisa Roja M" |
 
 **Pasos:**
 
-1. Iniciar sesión en SIGAL-LF con credenciales de "Encargado de Tienda (Supervisor)"[cite: 3].
-2. Ir al módulo de "Registro de Mermas"[cite: 3].
+1. Iniciar sesión en SIGAL-LF con credenciales de "Encargado de Tienda (Supervisor)".
+2. Ir al módulo de "Registro de Mermas".
 3. Seleccionar la prenda: "Camisa Roja M".
-4. Seleccionar motivo: **"Falla de Costura"**[cite: 3].
+4. Seleccionar motivo: **"Falla de Costura"**.
 5. Ingresar cantidad: **2 unidades**.
-6. Agregar descripción: "Rotura en la costura del hombro, no apta para venta"[cite: 3].
-7. Hacer clic en **"Registrar Merma"**[cite: 3].
+6. Agregar descripción: "Rotura en la costura del hombro, no apta para venta".
+7. Hacer clic en **"Registrar Merma"**.
 
 **Resultado esperado:**
 * ✅ El sistema confirma: "Merma registrada exitosamente".
 * ✅ El stock de "Camisa Roja M" disminuye de 99 a 97 unidades.
 * ✅ El movimiento se registra en el historial como "merma".
-* ✅ El motivo "Falla de Costura" queda registrado en el sistema[cite: 3].
+* ✅ El motivo "Falla de Costura" queda registrado en el sistema.
 * ✅ El histórico de mermas muestra el registro con fecha y usuario.
 
 **Resultado real:** [completar al ejecutar]  
@@ -157,7 +157,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-05 |
 | **Historia de usuario** | HU-05 (Congelamiento de precios de contingencia) |
 | **Requisito** | RF-04 (Consulta Express para Punto de Caja) |
-| **Módulo** | MOD-04[cite: 3] |
+| **Módulo** | MOD-04 |
 | **Precondición** | Cajera autenticada, sistema de ventas externo desconectado (caída de internet) |
 
 **Pasos:**
@@ -166,7 +166,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 2. Abrir SIGAL-LF en el navegador.
 3. Buscar la prenda: "Camisa Roja M".
 4. Verificar que el sistema muestra el precio actual: S/. 45.00.
-5. Hacer clic en **"Congelar Precio"**[cite: 3].
+5. Hacer clic en **"Congelar Precio"**.
 6. Ingresar el precio manualmente: **S/. 50.00** (por ajuste de contingencia).
 7. Confirmar el cambio.
 8. Verificar que el sistema utiliza el precio congelado.
@@ -191,14 +191,14 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-06 |
 | **Historia de usuario** | HU-06 (Dashboard de reportes) |
 | **Requisito** | RF-07 (Generación de Reportes en PDF/Excel) |
-| **Módulo** | MOD-05[cite: 3] |
+| **Módulo** | MOD-05 |
 | **Precondición** | Supervisor autenticado, al menos 30 días de datos de movimientos |
 
 **Pasos:**
 
-1. Iniciar sesión en SIGAL-LF con credenciales de "Encargado de Tienda"[cite: 3].
-2. Ir al módulo de "Dashboard de Reportes"[cite: 3].
-3. Seleccionar el reporte de "Rotación de Inventario"[cite: 3].
+1. Iniciar sesión en SIGAL-LF con credenciales de "Encargado de Tienda".
+2. Ir al módulo de "Dashboard de Reportes".
+3. Seleccionar el reporte de "Rotación de Inventario".
 4. Configurar filtros:
    * Fecha inicio: 01/06/2026
    * Fecha fin: 30/06/2026
@@ -210,12 +210,12 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 8. Hacer clic en **"Exportar a Excel"**.
 
 **Resultado esperado:**
-* ✅ El dashboard muestra la tasa de rotación por talla y color[cite: 3].
-* ✅ Identifica el stock estancado (prendas sin movimiento en 30 días)[cite: 3].
-* ✅ Muestra la consistencia de saldos entre almacén y ventas[cite: 3].
-* ✅ El PDF se genera y descarga correctamente[cite: 3].
-* ✅ El Excel se genera y descarga correctamente[cite: 3].
-* ✅ Los datos en el PDF/Excel coinciden con el dashboard[cite: 3].
+* ✅ El dashboard muestra la tasa de rotación por talla y color.
+* ✅ Identifica el stock estancado (prendas sin movimiento en 30 días).
+* ✅ Muestra la consistencia de saldos entre almacén y ventas.
+* ✅ El PDF se genera y descarga correctamente.
+* ✅ El Excel se genera y descarga correctamente.
+* ✅ Los datos en el PDF/Excel coinciden con el dashboard.
 
 **Resultado real:** [completar al ejecutar]  
 **¿Pasó?** ☐ SÍ / ☐ NO  
@@ -230,7 +230,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 | **ID** | CP-07 |
 | **Historia de usuario** | — |
 | **Requisito** | RNF-04 (Seguridad) |
-| **Módulo** | MOD-01[cite: 3] |
+| **Módulo** | MOD-01 |
 | **Precondición** | App instalada, sin sesión iniciada |
 
 **Pasos:**
@@ -257,9 +257,9 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 
 ### Objetivo
 
-Verificar que el sistema SIGAL-LF soporta las condiciones de operación reales en la tienda "La Fábrica" - Sucursal Huancayo, asegurando que el tiempo de respuesta no supere los 1.5 segundos y que el consumo de memoria RAM en la PC de caja (4GB) no exceda el 65% (2.6GB), tal como especifican los requerimientos de la arquitectura ligera en Vanilla JS[cite: 3].
+Verificar que el sistema SIGAL-LF soporta las condiciones de operación reales en la tienda "La Fábrica" - Sucursal Huancayo, asegurando que el tiempo de respuesta no supere los 1.5 segundos y que el consumo de memoria RAM en la PC de caja (4GB) no exceda el 65% (2.6GB), tal como especifican los requerimientos de la arquitectura ligera en Vanilla JS.
 
-> **Nota Crítica de Entorno:** La tienda opera con **UNA SOLA CAJA** en mostrador[cite: 3]. Las pruebas de carga omiten la concurrencia masiva de múltiples terminales físicas y se concentran estrictamente en la saturación por peticiones consecutivas, consultas masivas veloces y la estabilidad de la memoria local en el hardware antiguo de 4GB RAM[cite: 3].
+> **Nota Crítica de Entorno:** La tienda opera con **UNA SOLA CAJA** en mostrador. Las pruebas de carga omiten la concurrencia masiva de múltiples terminales físicas y se concentran estrictamente en la saturación por peticiones consecutivas, consultas masivas veloces y la estabilidad de la memoria local en el hardware antiguo de 4GB RAM.
 
 ### Herramienta
 
@@ -274,7 +274,7 @@ Verificar que el sistema SIGAL-LF soporta las condiciones de operación reales e
 * Total transacciones: **50 consultas secuenciales**
 
 **Escenario especial - Simulación de hora punta:**
-* Se ejecutan **20 consultas en rápida sucesión** con un intervalo de 1 segundo entre cada petición desde la misma instancia del navegador, emulando la atención crítica a clientes en hora punta (mediodía en la Calle Real)[cite: 3].
+* Se ejecutan **20 consultas en rápida sucesión** con un intervalo de 1 segundo entre cada petición desde la misma instancia del navegador, emulando la atención crítica a clientes en hora punta (mediodía en la Calle Real).
 
 **Endpoints a probar:**
 * `GET /api/inventario/:codigo` → Consulta express de stock matricial
@@ -317,7 +317,7 @@ JMeter genera un reporte HTML agregando los gráficos de rendimiento transaccion
 * Captura de pantalla del Administrador de Tareas de Windows verificando el uso estable de la memoria RAM de 4GB.
 * Reporte de Lighthouse con puntaje de rendimiento ≥ 90.
 
-El reporte consolidado se guardará en la ruta `/incremento-6/resultados-pruebas/` del repositorio Git institucional[cite: 3].
+El reporte consolidado se guardará en la ruta `/incremento-6/resultados-pruebas/` del repositorio Git institucional.
 
 ---
 
@@ -325,15 +325,15 @@ El reporte consolidado se guardará en la ruta `/incremento-6/resultados-pruebas
 
 | Requisito | Módulo | CP que lo verifica | Estado |
 | :--- | :--- | :--- | :--- |
-| RF-02 (Recepción y Calidad Logística) | MOD-02[cite: 3] | CP-01 | 🟢 Pendiente |
-| RF-03 (Control Transaccional y Stock Matricial) | MOD-03[cite: 3] | CP-02 | 🟢 Pendiente |
-| RF-06 (Sincronización con Sistema de Ventas) | MOD-03[cite: 3] | CP-03 | 🟢 Pendiente |
-| RF-06 (Auditoría de Mermas y Reportes) | MOD-05[cite: 3] | CP-04 | 🟢 Pendiente |
-| RF-04 (Consulta Express para Punto de Caja) | MOD-04[cite: 3] | CP-05 | 🟢 Pendiente |
-| RF-07 (Generación de Reportes en PDF/Excel) | MOD-05[cite: 3] | CP-06 | 🟢 Pendiente |
-| RNF-04 (Seguridad) | MOD-01[cite: 3] | CP-07 | 🟢 Pendiente |
+| RF-02 (Recepción y Calidad Logística) | MOD-02 | CP-01 | 🟢 Pendiente |
+| RF-03 (Control Transaccional y Stock Matricial) | MOD-03 | CP-02 | 🟢 Pendiente |
+| RF-06 (Sincronización con Sistema de Ventas) | MOD-03 | CP-03 | 🟢 Pendiente |
+| RF-06 (Auditoría de Mermas y Reportes) | MOD-05 | CP-04 | 🟢 Pendiente |
+| RF-04 (Consulta Express para Punto de Caja) | MOD-04 | CP-05 | 🟢 Pendiente |
+| RF-07 (Generación de Reportes en PDF/Excel) | MOD-05 | CP-06 | 🟢 Pendiente |
+| RNF-04 (Seguridad) | MOD-01 | CP-07 | 🟢 Pendiente |
 | RNF-01 (Rendimiento - Tiempo de respuesta ≤ 1.5s) | Todos | SQA6 - JMeter | 🟢 Pendiente |
 | RNF-02 (Usabilidad - PC de 4GB RAM, sin saturación) | Todos | SQA6 - Monitorización | 🟢 Pendiente |
 
 ---
-*Casos de Prueba v1.0 — Proyecto SIGAL-LF · UPLA · MDS 2026-1*[cite: 3]
+*Casos de Prueba v1.0 — Proyecto SIGAL-LF · UPLA · MDS 2026-1*
