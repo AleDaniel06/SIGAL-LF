@@ -1,9 +1,10 @@
 # 03 · Arquitectura Técnica — Sistema "La Fábrica"
 
 *Proyecto:* Sistema Integrado de Gestión de Almacén e Inventario — Tiendas "La Fábrica"  
-**Versión:** 1.0 · Julio 2026  
-**Autor:** José Moori (Arquitecto)  
-**Revisor:** Isabel Hurtado
+*Versión:* 1.0 · Julio 2026  
+*Autor:* José Moori (Arquitecto)  
+*Revisor:* Isabel Hurtado
+
 ---
 
 ## 1. Decisión Arquitectónica
