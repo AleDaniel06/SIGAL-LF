@@ -22,7 +22,7 @@ Estos casos son ejecutados por la ingeniera de calidad Isabel Hurtado junto con 
 
 **Pasos:**
 
-1. Iniciar sesión en SIGAL-LF con credenciales de "Apoyo de Caja".
+1. Iniciar sesión en SIGAL-LF con credenciales.
 2. Ir al módulo de "Recepción de Carga".
 3. Escanear el código de barras de la prenda: `8801234567890`.
 4. El sistema debe mostrar el nombre de la prenda automáticamente (o permitir digitarlo si no existe).
