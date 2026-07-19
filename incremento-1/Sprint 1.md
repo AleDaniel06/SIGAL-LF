@@ -38,7 +38,7 @@
 
 ## Issues del Incremento
 
-Ver todas las issues etiquetadas con `incremento-1` en el tablero del proyecto → [Ir a GitHub Projects](https://github.com/).
+Ver todas las issues etiquetadas con `incremento-1` en el tablero del proyecto.
 
 * `#1` Configurar proyecto Node.js con Express
 * `#2` Diseñar modelo de datos relacional para usuarios y prendas
