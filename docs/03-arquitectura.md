@@ -193,36 +193,52 @@ CREATE TABLE sync_ventas (
 ### 5.1 Flujo de descuento automatizado por ventas (API REST)
 
 ```text
-[ CLIENTE WEB / FRONTEND SPA ] 
-               |
-               | 1. HTTP POST /api/v1/inventario/venta (Petición Fetch asíncrona)
-               | Payload: { codigo: "PR-1029", talla: "M", color: "Azul", cantidad: 1 }
-               v
-[ SERVIDOR API / BACKEND NODE.JS ]
-               |
-               | 2. Middleware: Verifica formato JSON y firma del Token JWT (RBAC)
-               | 3. Controlador: Inicializa bloque transaccional mediante Prisma ORM
-               v
-[ BASE DE DATOS / POSTGRESQL (SUPABASE) ]
-               |
-               | 4. Query SQL: SELECT stock_cantidad FROM inventario WHERE ... FOR UPDATE;
-               |
-               +---> ¿Condición Lógica: stock_cantidad >= cantidad?
-                        |
-                        ├── [ NO ] ---> 5a. Lanza Excepción / Ejecuta ROLLBACK automático
-                        |
-                        └── [ SÍ ] ---> 5b. Ejecuta UPDATE decremental en ubicación 'piso_venta'
-                                            Inserta en tabla 'movimientos' (tipo: 'venta')
-                                            Inserta en 'sync_ventas' (estado: 'procesado')
-                                            Commit de la transacción (Aislamiento ACID completo)
-               |
-               v
-[ SERVIDOR API / BACKEND NODE.JS ]
-               |
-               | 6. Parsea respuesta de la base de datos a estructura JSON limpia
-               | 7. Retorna HTTP Status 200 OK con payload de confirmación de stock
-               v
-[ CLIENTE WEB / FRONTEND SPA ] ---> (Actualiza la interfaz de caja en un tiempo < 1.5 segundos)
+                           FLUJO DE DESCUENTO AUTOMATIZADO POR VENTAS
+
+
+                         +---------------------------+
+                         |   Cliente Web (Caja)      |
+                         |   Registra la venta       |
+                         +-------------+-------------+
+                                       |
+                                       | Envía la venta
+                                       ▼
+                         +---------------------------+
+                         |      Backend API          |
+                         |   Valida la solicitud     |
+                         +-------------+-------------+
+                                       |
+                                       | Consulta el stock
+                                       ▼
+                         +---------------------------+
+                         |     Base de Datos         |
+                         | PostgreSQL (Supabase)     |
+                         +-------------+-------------+
+                                       |
+                            ¿Hay stock disponible?
+                                /              \
+                              Sí                No
+                              |                 |
+                              ▼                 ▼
+                  +-------------------+   +-------------------+
+                  | Descuenta         |   | Rechaza la venta  |
+                  | el stock          |   | e informa que     |
+                  | Registra el       |   | no hay stock      |
+                  | movimiento        |   +-------------------+
+                  +---------+---------+
+                            |
+                            ▼
+                  +---------------------------+
+                  |      Backend API          |
+                  | Confirma la operación     |
+                  +-------------+-------------+
+                                |
+                                ▼
+                  +---------------------------+
+                  |   Cliente Web (Caja)      |
+                  | ✓ Venta realizada         |
+                  | ✓ Stock actualizado       |
+                  +---------------------------+
 ```
 
 ### 5.2 Flujo de recepción de fardos (Aumento de stock masivo)
