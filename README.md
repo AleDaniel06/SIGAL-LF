@@ -38,6 +38,23 @@
 - ❌ Cruce de códigos que altera el inventario lógico
 - ❌ Búsqueda ciega de prendas (sin talla/color/ubicación)
 - ❌ Descuadres económicos cobrados al personal
+  
+---
+
+## 💡 Solución Propuesta
+
+**Arquitectura centralizada con actualización en tiempo real:**  
+SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso manual en Excel. El inventario se actualiza en tiempo real desde la recepción de fardos de Marvisur, permitiendo consultas instantáneas por código, talla, color y ubicación desde la PC de caja. El sistema incluye módulos de autenticación, recepción, stock matricial, consulta express, mermas y reportes.
+
+**Características clave:**
+- ✅ Actualización de stock en tiempo real
+- ✅ Matriz multidimensional: Código → Talla → Color → Ubicación
+- ✅ Consulta express en < 1.5 segundos
+- ✅ Registro de mermas justificadas
+- ✅ Dashboard de rotación y consistencia
+- ✅ Exportación a PDF y Excel
+
+---
 
 ## 📌 Nota sobre el alcance
 
@@ -56,21 +73,6 @@
 ❌ NO cierra caja (eso lo hace el POS)
 
 La integración con el POS es **solo para consultar stock y decrementar existencias** al momento de una venta.
-
----
-
-## 💡 Solución Propuesta
-
-**Arquitectura centralizada con actualización en tiempo real:**  
-SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso manual en Excel. El inventario se actualiza en tiempo real desde la recepción de fardos de Marvisur, permitiendo consultas instantáneas por código, talla, color y ubicación desde la PC de caja. El sistema incluye módulos de autenticación, recepción, stock matricial, consulta express, mermas y reportes.
-
-**Características clave:**
-- ✅ Actualización de stock en tiempo real
-- ✅ Matriz multidimensional: Código → Talla → Color → Ubicación
-- ✅ Consulta express en < 1.5 segundos
-- ✅ Registro de mermas justificadas
-- ✅ Dashboard de rotación y consistencia
-- ✅ Exportación a PDF y Excel
 
 ---
 
