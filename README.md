@@ -123,39 +123,50 @@ El árbol jerárquico del repositorio organiza el código y la documentación t�
 
 ```text
 sigal-lf/
-├── .gitignore                         # Exclusiones de archivos en Git
-├── README.md                          # Este archivo (Carta de presentación principal)
+├── .gitignore # Archivos ignorados por Git
+├── README.md # Este archivo
 │
 ├── assets/
-│   └── diagramas/                     # Prototipos de pantallas y diagramas UI
-│       ├── Pantalla-1-POS.md          # Diagrama de Interfaz Consulta Express
-│       ├── Pantalla-2-cierre-de-caja.md # Diagrama de Cierre de Caja
-│       └── Pantalla-3-dashboard.md    # Diagrama de Dashboard Analítico
+│ └── diagramas/
+│ ├── Pantalla-1-POS.md # Diagrama de Consulta Express
+│ ├── Pantalla-2-cierre-de-caja.md # Diagrama de Cierre/Caja
+│ └── Pantalla-3-dashboard.md # Diagrama de Dashboard
 │
-├── docs/                              # Documentación del ciclo de vida de ingeniería
-│   ├── 01-diagnostico.md              # Diagnóstico detallado socio-técnico de la tienda
-│   ├── 02-ERS.md                      # Especificación de Requisitos de Software
-│   ├── 03-arquitectura.md             # Diseño de arquitectura técnica y DER relacional
-│   ├── 04-plan-calidad.md             # Estrategia de Calidad ISO 25010 y SQA
-│   └── 05-casos-de-prueba.md          # Especificación de Casos de Prueba (SQA5 y SQA6)
+├── docs/
+│ ├── 01-diagnostico.md # Diagnóstico organizacional
+│ ├── 02-ERS.md # Especificación de Requisitos
+│ ├── 03-arquitectura.md # Diseño de arquitectura
+│ ├── 04-plan-calidad.md # ISO 25010 + SQA Shift Left
+│ ├── 05-casos-de-prueba.md # Casos de prueba (SQA5 y SQA6)
+│ └── 06-manual-usuario.md # Manual de usuario
 │
-├── incremento-1/                      # Entregables funcionales del Bloque 1
-│   └── README.md                      # Artefactos de Seguridad y Recepción
+├── incremento-1/
+│ └── README.md # Artefactos del Incremento 1
 │
-├── incremento-2/                      # Entregables funcionales del Bloque 2
-│   ├── .gitignore                     # Exclusiones locales de entorno
-│   ├── README.md                      # Artefactos del Motor Matricial y API
-│   └── README1.md                     # Documentación adicional de integración
+├── incremento-2/
+│ ├── README.md # Artefactos del Incremento 2
+│ ├── .gitignore # .gitignore específico del incremento
+│ └── README1.md # Documentación adicional
 │
-└── incremento-3/                      # Entregables funcionales del Bloque 3
-    └── README.md                      # Módulos finales, Dashboards y Release 1.0
+└── incremento-3/
+└── README.md # Artefactos del Incremento 3
 ```
 
 ---
 
-## ✅ Plan de Calidad
+## ⚠️ Plan de Mitigación de Riesgos (5 Riesgos)
 
-**ISO/IEC 25010:** El sistema se evalúa bajo las siguientes características críticas:
+| # | Riesgo | Probabilidad (1-5) | Impacto (1-5) | Severidad | Mitigación | Contingencia |
+|---|--------|-------------------|---------------|-----------|------------|--------------|
+| 1 | **Degradación del rendimiento por consumo de RAM en PC de caja** | 3 | 4 | 12 | Prohibición de frameworks pesados, uso de Vanilla JS | Limpieza automática de memoria y paginación de resultados si RAM > 85% |
+| 2 | **Caída del enlace de internet local durante actualización de saldos** | 4 | 5 | 20 | Transacciones ACID con rollback automático | Cola de peticiones asíncronas en LocalStorage, sincronización al recuperar red |
+| 3 | **Falta de adopción del sistema por el personal operativo** | 3 | 4 | 12 | Capacitación presencial, manual de usuario | Interfaz intuitiva con dropdowns, feedback continuo del personal |
+| 4 | **Pérdida de datos por fallo en Supabase (servidor cloud)** | 2 | 5 | 10 | Backups automáticos diarios en Supabase | Rollback ACID, sincronización asíncrona, logs de auditoría |
+| 5 | **Incumplimiento del cronograma por sobrecarga académica** | 4 | 3 | 12 | Daily Scrum, priorización de backlog | Ajuste de alcance del MVP, reducción de features opcionales |
+
+---
+
+## ✅ Plan de Calidad ISO/IEC 25010
 
 | Característica | Nivel | Métrica |
 |----------------|-------|---------|
@@ -164,13 +175,19 @@ sigal-lf/
 | **Usabilidad** | 5/5 ★ | Tasa de error humano < 2% · Selectores fijos (dropdowns) |
 | **Seguridad** | 5/5 ★ | 0 vulnerabilidades críticas OWASP Top 10 |
 
-**Estrategia SQA (Shift Left):**
-- SQA1: Auditoría de requisitos (Sprint 0)
-- SQA2: Walkthrough de arquitectura y DER
-- SQA3: Análisis estático de código (SonarCloud)
-- SQA4: Code Review obligatorio en cada PR
-- SQA5: Pruebas de aceptación en PC real
-- SQA6: Pruebas de carga y rendimiento (JMeter)
+---
+
+## 🔧 Estrategia SQA (Shift Left) — 7 Actividades
+
+| ID | Actividad | Fase | Shift Left | Responsable | Herramienta |
+|----|-----------|------|------------|-------------|-------------|
+| SQA1 | Auditoría de requisitos y criterios de aceptación | Sprint 0 | Sí | Alexandra Cuchula | GitHub Projects + Checklist |
+| SQA2 | Walkthrough de arquitectura y DER | Sprint 0 | Sí | José Moori + Isabel Hurtado | Revisión presencial |
+| SQA3 | Análisis estático automático de código | Sprint 1-6 | Sí | Isabel Hurtado | SonarCloud + GitHub Actions |
+| SQA4 | Code Review obligatorio en cada Pull Request | Sprint 1-6 | Sí | Equipo (rotativo) | GitHub Pull Requests |
+| SQA5 | Validación de integridad referencial en scripts SQL | Sprint 2 | Sí | Alexandra Cuchula | Revisión manual de scripts |
+| SQA6 | Pruebas de aceptación en PC de caja (4GB RAM) | Sprint 6 | Parcial | Isabel Hurtado | Casos de prueba (doc 05) |
+| SQA7 | Pruebas de rendimiento y carga (JMeter) | Sprint 6 | Parcial | José Moori | Apache JMeter |
 
 ---
 
