@@ -39,6 +39,24 @@
 - ❌ Búsqueda ciega de prendas (sin talla/color/ubicación)
 - ❌ Descuadres económicos cobrados al personal
 
+## 📌 Nota sobre el alcance
+
+**SIGAL-LF es un sistema de GESTIÓN DE INVENTARIO y ALMACÉN.**
+
+✅ Registra recepción de fardos de Marvisur
+✅ Consulta stock por código, talla, color y ubicación
+✅ Visualiza ubicación exacta (Almacén Piso 2 / Piso de Venta)
+✅ Registra mermas justificadas
+✅ Genera reportes de rotación y consistencia
+✅ Se integra con el sistema de ventas (POS) externo mediante API REST
+
+❌ NO es un Punto de Venta (POS)
+❌ NO maneja pagos (efectivo, Yape, Plin)
+❌ NO emite boletas ni facturas
+❌ NO cierra caja (eso lo hace el POS)
+
+La integración con el POS es **solo para consultar stock y decrementar existencias** al momento de una venta.
+
 ---
 
 ## 💡 Solución Propuesta
