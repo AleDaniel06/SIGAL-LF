@@ -60,19 +60,39 @@ SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso
 
 **SIGAL-LF es un sistema de GESTIÓN DE INVENTARIO y ALMACÉN.**
 
-✅ Registra recepción de fardos de Marvisur
-✅ Consulta stock por código, talla, color y ubicación
-✅ Visualiza ubicación exacta (Almacén Piso 2 / Piso de Venta)
-✅ Registra mermas justificadas
-✅ Genera reportes de rotación y consistencia
-✅ Se integra con el sistema de ventas (POS) externo mediante API REST
+### ✅ Lo que SÍ hace SIGAL-LF
 
-❌ NO es un Punto de Venta (POS)
-❌ NO maneja pagos (efectivo, Yape, Plin)
-❌ NO emite boletas ni facturas
-❌ NO cierra caja (eso lo hace el POS)
+| # | Funcionalidad | Descripción |
+|---|---------------|-------------|
+| 1 | Registro de recepción | Registra fardos de Marvisur con conteo y calidad |
+| 2 | Consulta de stock | Busca por código, talla, color y ubicación |
+| 3 | Ubicación exacta | Muestra si está en Almacén Piso 2 o Piso de Venta |
+| 4 | Registro de mermas | Registra pérdidas justificadas (costura, manchado, robo) |
+| 5 | Reportes | Genera reportes de rotación y consistencia |
+| 6 | Integración con POS | API REST para consultar stock y decrementar ventas |
 
-La integración con el POS es **solo para consultar stock y decrementar existencias** al momento de una venta.
+---
+
+### ❌ Lo que NO hace SIGAL-LF
+
+| # | Funcionalidad | ¿Quién lo hace? |
+|---|---------------|-----------------|
+| 1 | Punto de Venta (POS) | Sistema de ventas externo |
+| 2 | Pagos (Efectivo, Yape, Plin) | Sistema de ventas externo |
+| 3 | Emisión de boletas/facturas | Sistema de ventas externo |
+| 4 | Cierre de caja | Sistema de ventas externo |
+
+---
+
+### 🔗 Integración con el POS
+
+La integración con el POS es **solo para**:
+
+| Acción | Descripción |
+|--------|-------------|
+| **Consultar stock** | El POS pregunta a SIGAL-LF si hay stock disponible |
+| **Decrementar stock** | El POS avisa a SIGAL-LF cuando se vende una prenda |
+
 
 ---
 
