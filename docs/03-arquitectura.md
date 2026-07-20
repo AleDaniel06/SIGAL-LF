@@ -119,16 +119,16 @@ CREATE TABLE usuarios (
     password_hash VARCHAR(255) NOT NULL,
     rol VARCHAR(20) CHECK(rol IN ('cajera', 'supervisor', 'apoyo')) NOT NULL,
     activo BOOLEAN DEFAULT TRUE,
-    creado_en TIMESTAMP DEFAULT NOW()
+    creado_em TIMESTAMP DEFAULT NOW()
 );
 
 -- Tabla de prendas (catálogo maestro)
 CREATE TABLE prendas (
     id_prenda SERIAL PRIMARY KEY,
-    codigo_barra VARCHAR(50) UNIQUE NOT NULL,
-    nombre VARCHAR(200) NOT NULL,
+    código_barra VARCHAR(50) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
-    categoria VARCHAR(100),
+    categoría VARCHAR(100),
     marca VARCHAR(100),
     fecha_ingreso TIMESTAMP DEFAULT NOW()
 );
@@ -152,23 +152,26 @@ CREATE TABLE movimientos (
     cantidad INTEGER NOT NULL,
     fecha_movimiento TIMESTAMP DEFAULT NOW(),
     motivo TEXT,
-    id_usuario INTEGER NOT NULL REFERENCES usuarios(id_usuario),
-    referencia VARCHAR(100)  -- Código de venta o guía de remisión Marvisur
+    estado VARCHAR(10) CHECK(estado IN ('en proceso', 'completado', 'cancelado')) NOT NULL,
+    fecha_ingreso TIMESTAMP DEFAULT NOW(),
+    activo BOOLEAN DEFAULT FALSE
 );
 
--- Tabla de configuración (precios congelados y parámetros locales)
-CREATE TABLE configuracion (
-    id_config SERIAL PRIMARY KEY,
-    clave VARCHAR(100) UNIQUE NOT NULL,
-    valor TEXT NOT NULL,
-    descripcion TEXT,
-    actualizado_en TIMESTAMP DEFAULT NOW()
-);
+-- ============================================
+-- 🔥 ÍNDICES DE OPTIMIZACIÓN (Agregar AQUÍ)
+-- ============================================
 
--- Índices de rendimiento para optimización en hardware de 4GB RAM
-CREATE INDEX idx_inventario_prenda_talla_color ON inventario(id_prenda, talla, color);
-CREATE INDEX idx_movimientos_fecha ON movimientos(fecha_movimiento);
+-- Para búsquedas rápidas por código de barras en el mostrador
 CREATE INDEX idx_prendas_codigo ON prendas(codigo_barra);
+
+-- Para consultas matriciales por talla y color (consulta express)
+CREATE INDEX idx_inventario_prenda_talla_color ON inventario(id_prenda, talla, color);
+
+-- Para consultas de movimientos por fecha (reportes)
+CREATE INDEX idx_movimientos_fecha ON movimientos(fecha_movimiento);
+
+-- Para consultas de sincronización por estado
+CREATE INDEX idx_sync_estado ON sync_ventas(estado_sync);
 ```
 
 ### 4.2 Tabla de Movimientos de Sincronización (Integración con Ventas)
