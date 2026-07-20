@@ -17,98 +17,108 @@
 
 ---
 
-## 👥 Equipo de Desarrollo y Roles
-La célula de desarrollo opera bajo una estructura autoorganizada y de responsabilidad compartida:
+## 👥 Integrantes
 
-| Integrante | Rol en el Proyecto | Responsabilidades Clave |
-| :--- | :--- | :--- |
-| **Alexandra Milagros Cuchula Daniel** | Product Owner Proxy / Analista de Negocio | Gestión del Product Backlog, levantamiento de reglas de negocio en retail y validación de consistencia del stock. |
-| **José Andrés Moori Zegarra** | Scrum Master / Arquitecto Técnico | Disciplina metodológica, remoción de bloqueos técnicos, arquitectura backend y control de integración en GitHub. |
-| **Isabel Hurtado** | Ingeniera de Software / Aseguramiento de Calidad (QA) | Diseño del plan de pruebas, automatización de pruebas unitarias y SQA general. |
+| Nombre | Rol en el proyecto |
+|--------|-------------------|
+| Alexandra Milagros Cuchula Daniel | Product Owner Proxy / Analista de Negocio |
+| José Andrés Moori Zegarra | Scrum Master / Arquitecto Técnico |
+| Isabel Hurtado | Ingeniera de Software / Aseguramiento de Calidad (QA) |
 
 ---
 
 ## 🎯 Contexto del Problema
-La sucursal estratégica de **"La Fábrica"** en Huancayo (Calle Real, Junín) opera en el rubro de retail textil masivo. Actualmente, el flujo logístico sufre ineficiencias críticas por procesos manuales basados en hojas de cálculo aisladas:
 
-* **Latencia Crítica en Recepción:** Los fardos de mercadería llegan por Marvisur y se cuentan manualmente. Su transcripción a Excel y envío por correo a la central genera un desfase donde el stock virtual figura en "cero", bloqueando la venta lógica de prendas físicamente disponibles.
-* **Cruce de Códigos en Mostrador:** Ante la falta de stock virtual actualizado, el personal de caja escanea códigos de prendas ajenas con el mismo precio para no perder la venta, alterando sistemáticamente la fidelidad del inventario.
-* **Búsqueda Ciega de Prendas:** El sistema genérico omite el desglose por Talla, Color y Ubicación Física, forzando a los asesores a buscar a ciegas en los almacenes del segundo piso.
-* **Penalizaciones Económicas:** Los descuadres finales acumulados son cobrados directamente del sueldo del personal operativo debido a las políticas punitivas vigentes.
+**Cliente:** Tienda "La Fábrica" — Sucursal Huancayo, Calle Real, Junín
 
-### 🚫 Restricciones Críticas del Entorno
-* 📱 **Prohibido el uso de celulares** en el piso de venta (uso obligado de terminal de caja web única).
-* 🖥️ **PC de caja antigua con 4GB RAM** (Línea base restrictiva para el rendimiento del software).
-* 💰 **Presupuesto FINANCIERO CERO ($0.00)** (Uso mandatorio de herramientas de capa gratuita).
-* ⏳ **Plazo académico de 13 semanas** improrrogables.
+**Problema:** El sistema de inventario actual opera con procesos manuales en Excel que generan latencia crítica. La mercadería llega en fardos de Marvisur, se cuenta manualmente, se transcribe a Excel y se envía por correo a un ingeniero central. Mientras esto ocurre, el stock virtual figura en "cero", forzando a la cajera a cruzar códigos en el mostrador.
+
+**Impacto real:**
+- ❌ Pérdida de ventas por stock desactualizado
+- ❌ Cruce de códigos que altera el inventario lógico
+- ❌ Búsqueda ciega de prendas (sin talla/color/ubicación)
+- ❌ Descuadres económicos cobrados al personal
 
 ---
 
 ## 💡 Solución Propuesta
-**SIGAL-LF** es una aplicación web centralizada con actualización transaccional en tiempo real que elimina la latencia de procesamiento.
 
-### Características Clave
-* **Actualización en Tiempo Real:** Sincronización inmediata entre la recepción de fardos y el punto de caja.
-* **Stock Matricial Multidimensional:** Indexación relacional estricta: `Código Base` $\rightarrow$ `Talla` $\rightarrow$ `Color` $\rightarrow$ `Ubicación`.
-* **Consulta Express Eficiente:** Interfaz minimalista optimizada para renderizar consultas en la PC antigua en menos de 1.5 segundos.
-* **Auditoría de Mermas:** Registro justificado de prendas dañadas o pérdidas validadas para evitar cargos injustificados al sueldo del personal.
+**Arquitectura centralizada con actualización en tiempo real:**  
+SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso manual en Excel. El inventario se actualiza en tiempo real desde la recepción de fardos de Marvisur, permitiendo consultas instantáneas por código, talla, color y ubicación desde la PC de caja. El sistema incluye módulos de autenticación, recepción, stock matricial, consulta express, mermas y reportes.
+
+**Características clave:**
+- ✅ Actualización de stock en tiempo real
+- ✅ Matriz multidimensional: Código → Talla → Color → Ubicación
+- ✅ Consulta express en < 1.5 segundos
+- ✅ Registro de mermas justificadas
+- ✅ Dashboard de rotación y consistencia
+- ✅ Exportación a PDF y Excel
 
 ---
 
 ## 🛠️ Stack Tecnológico
-Para garantizar la viabilidad técnica bajo la restricción de presupuesto cero ($0.00$), se estructuró la siguiente arquitectura basada en software libre y capas gratuitas (*Free Tier*):
 
-| Capa | Tecnología | Justificación Contextual | Costo |
-| :--- | :--- | :--- | :--- |
-| **Frontend** | HTML5 + CSS3 + Vanilla JS | Sin frameworks pesados. Renderizado nativo ultraligero para optimizar el consumo en la PC de 4GB RAM. | $0.00 |
-| **Backend** | Node.js + Express.js | Entorno asíncrono y ligero. Modelo de E/S sin bloqueo capaz de procesar múltiples decrementos concurrentes. | $0.00 |
-| **Base de Datos** | PostgreSQL (Supabase) | Motor relacional robusto. Soporte nativo para transacciones ACID que garantiza la consistencia del stock matricial. | $0.00 |
-| **ORM** | Prisma ORM | Consultas tipadas que mitigan errores de sintaxis y previenen vulnerabilidades de inyección SQL. | $0.00 |
-| **Alojamiento Cloud** | Render Cloud | Despliegue automatizado continuo acoplado mediante webhooks al repositorio de GitHub. | $0.00 |
-| **Control Versiones** | GitHub | Eje central de la integración del código, gestión de Pull Requests y GitHub Projects. | $0.00 |
-| **Análisis Estático** | SonarCloud | Escaneo automatizado de vulnerabilidades y deudas técnicas del código fuente (Shift Left). | $0.00 |
-| **Pruebas Unitarias** | Jest | Framework de pruebas para asegurar la estabilidad del motor logístico y de sincronización. | $0.00 |
-| **Pruebas de Carga** | Apache JMeter | Simulación de alta concurrencia y flujos masivos en el mostrador de caja durante horas punta. | $0.00 |
+| Capa | Tecnología | Justificación |
+|------|------------|---------------|
+| **Aplicación Web (Frontend)** | HTML5 + CSS3 + Vanilla JS | Sin frameworks pesados, optimizado para PC de 4GB RAM |
+| **Backend API** | Node.js + Express.js | Entorno ligero, mismo ecosistema JavaScript del equipo |
+| **Base de Datos** | PostgreSQL (Supabase) | Open source, robusto, transacciones ACID, gratuito |
+| **ORM/Query Builder** | Prisma | Queries tipadas, evita SQL manual propenso a errores |
+| **Despliegue** | Render Cloud | Free tier, despliegue automatizado con GitHub webhooks |
+| **Control de Versiones** | GitHub | Gestión de código, Pull Requests, GitHub Projects |
+| **Análisis Estático** | SonarCloud | Detección de vulnerabilidades OWASP Top 10 |
+| **Pruebas Unitarias** | Jest | Pruebas del motor de sincronización |
+| **Pruebas de Carga** | Apache JMeter | Pruebas de rendimiento y concurrencia |
 
-**COSTO TOTAL DE INFRAESTRUCTURA: $0.00 USD**
+**Costo total: $0.00**
 
 ---
 
-## 📐 Metodología y Modelo de Proceso
+## 📐 Metodología
 
-El proyecto adopta el marco de trabajo **Scrum** adaptado con **Integración Continua de Datos**.
+**Modelo de Proceso: Scrum (Adaptado con Integración Continua de Datos)**
 
-### 📊 Evaluación de Alternativas Metodológicas
+Este proyecto aplica Scrum porque los requisitos del cliente evolucionan constantemente en el entorno retail textil, y el equipo necesita entregar valor de forma incremental cada 2 semanas. Scrum permite probar la ligereza de la interfaz en la PC de 4GB RAM desde las primeras iteraciones.
+
+### Evaluación de alternativas metodológicas
 
 | Criterio de Evaluación | Modelo en Cascada (Tradicional) | Modelo Espiral (Basado en Riesgos) | Marco de Trabajo Scrum (Ágiles) |
-| :--- | :--- | :--- | :--- |
-| **a. Claridad de requisitos** | **Baja.** Asume requisitos estáticos; fracasaría ante variaciones de precios y traslados imprevistos de Marvisur. | **Alta.** Permite evolución progresiva, pero la sobrecarga analítica inicial dilata el inicio de la programación. | **Alta.** Diseñado para entornos volátiles. Permite refinar y priorizar las reglas logísticas en cada ciclo. |
-| **b. Riesgo técnico** | **Baja.** La integración final tardía provocaría que la lentitud en la PC de caja antigua se detecte irreversiblemente tarde. | **Muy Alta.** Enfoque matemático sólido ante riesgos que excede las necesidades de esta escala comercial local. | **Alta.** Los riesgos de rendimiento se mitigan mediante pruebas de incrementos reales en la PC de caja en cada Sprint. |
-| **c. Madurez del equipo** | **Media/Baja.** Documentación técnica masiva previa que saturaría la capacidad operativa de la célula compacta. | **Baja.** Exige comités corporativos y herramientas estadísticas avanzadas inviables para pregrado. | **Alta.** Promueve autoorganización en equipos reducidos, optimizando las capacidades directas de los desarrolladores. |
-| **d. Documentación** | **Muy Alta.** Produce manuales rígidos. La administración de la tienda prefiere resultados operativos rápidos. | **Alta.** Documentación robusta de mitigación de fallos y actas de control cíclico estructuradas. | **Modificada.** Prioriza el código funcional sobre la documentación masiva, adaptándose para generar actas logísticas de stock. |
-| **e. Velocidad de entrega** | **Muy Baja.** Principio de "todo o nada". La tienda continuaría perdiendo dinero durante meses antes de ver software útil. | **Media.** Entregas progresivas mediante prototipos analíticos que ralentizan la atención a dolores urgentes. | **Muy Alta.** Garantiza un módulo operativo y testeado (ej. consulta rápida de stock) al término de cada ciclo de 2 semanas. |
+|------------------------|--------------------------------|-----------------------------------|--------------------------------|
+| **a. Adecuación al nivel de claridad de los requisitos** | **Baja.** Asume que los requisitos se mantienen estáticos. Fracasaría ante las variaciones semanales de precios e ingresos de fardos de La Fábrica. | **Alta.** Permite la evolución progresiva de los requisitos, pero la sobrecarga de análisis inicial dilata el inicio de la programación de código. | **Alta.** Diseñado para entornos volátiles. Permite refinar, priorizar y reestructurar las reglas logísticas en el Product Backlog en cada ciclo. |
+| **b. Tolerancia al riesgo técnico del proyecto** | **Baja.** La integración se ejecuta en la fase final, provocando que la lentitud en la PC de caja antigua se detecte de manera tardía e irreversible. | **Muy Alta.** Centrado en la evaluación matemática de riesgos, aportando una solidez técnica que excede las necesidades de este sistema local. | **Alta.** Los riesgos de compatibilidad y rendimiento de hardware se mitigan mediante pruebas de incremento reales en la PC de caja en cada Sprint. |
+| **c. Compatibilidad con la madurez del equipo** | **Media/Baja.** Requiere la elaboración de documentación técnica estática y masiva previa a la codificación, saturando la capacidad de tres integrantes. | **Baja.** Exige un alto nivel de experiencia corporativa avanzada y el uso de herramientas estadísticas de riesgo, inadecuado para pregrado. | **Alta.** Promueve la autoorganización y la comunicación directa en células de tamaño reducido. Optimiza las capacidades del equipo Cuchula-Moori-Hurtado. |
+| **d. Requisitos de documentación del cliente** | **Muy Alta.** Produce manuales y especificaciones rígidas de ingeniería. La administración de la tienda prefiere resultados operativos y visuales rápidos. | **Alta.** Documentación robusta enfocada en planes corporativos de mitigación de fallos logísticos y actas de control cíclico. | **Modificada.** Prioriza el código funcional sobre la documentación, adaptándose para generar actas de validación de inventario. |
+| **e. Velocidad de entrega de valor al cliente** | **Muy Baja.** Sigue el principio de "todo o nada". La tienda continuaría perdiendo dinero y descuadrando caja durante meses antes de ver una pantalla funcional. | **Media.** Las entregas son progresivas mediante prototipos evolutivos de ingeniería, lo cual ralentiza la atención a los dolores urgentes. | **Muy Alta.** Garantiza la entrega de un módulo de software utilizable y operativo (ej. consulta rápida de stock) al término de cada iteración de 2 semanas. |
 
-### 💡 Justificación de la Elección
-1. **Naturaleza Empírica frente al Retail:** Permite responder quincenalmente ante fluctuaciones de precios o ingresos imprevistos de mercancía a través de la inspección y adaptación.
-2. **Mitigación de Hardware en Fases Tempranas:** Obliga al equipo a desplegar un incremento utilizable al final de cada Sprint, posibilitando pruebas de rendimiento en caliente sobre la PC física de la tienda.
-3. **Eficiencia de Procesos:** Elimina la sobreingeniería y burocracia de comités complejos, optimizando las horas hombre del equipo de 3 integrantes.
+### Justificación de la elección
 
----
+**Scrum fue seleccionado unánimemente porque:**
 
-## 📈 Incrementos del Proyecto (Planificación Temporal)
+1. **Naturaleza Empírica frente a la Volatilidad del Retail:** En la sucursal de "La Fábrica", las variables operativas cambian de forma imprevista (traslados inter-tiendas de Marvisur no programados y fluctuaciones de precios sin aviso). Scrum permite que el sistema evolucione de forma quincenal a través de la retroalimentación directa en el mostrador.
 
-El desarrollo del MVP se divide estrictamente en bloques de tiempo regulares e invariables (*Timeboxing*) a lo largo de **13 semanas**:
+2. **Mitigación Temprana del Riesgo de Hardware:** Al ser la máquina de caja un equipo antiguo con 4GB RAM, Scrum obliga al equipo a entregar un incremento de software utilizable al final de cada Sprint, permitiendo probar la ligereza de la interfaz web directamente en la computadora de la tienda desde las primeras semanas.
 
-| Incremento | Sprints | Semanas | Contenido Funcional | Módulos Relacionados |
-| :--- | :--- | :--- | :--- | :--- |
-| **Incremento 1** | Sprint 0 + 1 | Semanas 1-3 | **Seguridad y Captura de Carga:** Configuración de arquitectura, autenticación con control de accesos basado en roles (RBAC) e interfaz de recepción de fardos de Marvisur. | `MOD-01` (Autenticación)<br>`MOD-02` (Recepción) |
-| **Incremento 2** | Sprint 2 + 3 | Semanas 4-7 | **Stock Matricial e Interoperabilidad:** Motor relacional con almacenamiento dimensional (talla, color, ubicación) y API REST de descuento automático por ventas en mostrador. | `MOD-03` (Control Transaccional) |
-| **Incremento 3** | Sprint 4 + 5 + 6 | Semanas 8-13 | **Auditoría, Analítica y Despliegue:** Panel de registro de mermas, dashboard de rotación textil, exportaciones (PDF/Excel), pruebas de aceptación en PC real y lanzamiento web en Render Cloud. | `MOD-04` (Consulta Express)<br>`MOD-05` (Mermas)<br>`Release 1.0` |
+3. **Idoneidad para Equipos Reducidos:** Modelos complejos como el Espiral demandan comités de gestión de riesgos que consumirían el tiempo de codificación de un equipo de tres personas. Scrum proporciona un marco ligero que elimina la burocracia técnica.
 
 ---
 
-## 🗂️ Estructura del Repositorio
+## 🚀 Incrementos del Proyecto
 
+| Incremento | Sprints | Semanas | Contenido | Módulos |
+|------------|---------|---------|-----------|---------|
+| **Incremento 1** | Sprint 1 | Semana 2-3 | Seguridad + Recepción de Carga | MOD-01, MOD-02 |
+| **Incremento 2** | Sprint 2 + 3 | Semana 4-7 | Stock Matricial + API de Integración | MOD-03 (completo) |
+| **Incremento 3** | Sprint 4 + 5 + 6 | Semana 8-13 | Mermas + Dashboard + Despliegue | MOD-04, MOD-05, Release |
+
+**Detalle de cada incremento:**
+
+- **Incremento 1 (Semanas 2-3):** Autenticación de usuarios (RBAC), registro de recepción de fardos de Marvisur, API base de lectura de stock.
+- **Incremento 2 (Semanas 4-7):** Motor de persistencia con stock matricial (talla/color/ubicación), API de integración con POS para decremento automático por ventas.
+- **Incremento 3 (Semanas 8-13):** Panel de mermas, dashboard de consistencia, reportes exportables (PDF/Excel), pruebas de aceptación en PC real, despliegue en Render Cloud.
+
+---
+
+## 📁 Estructura del Repositorio
 El árbol jerárquico del repositorio organiza el código y la documentación técnica de manera limpia y modular:
 
 ```text
