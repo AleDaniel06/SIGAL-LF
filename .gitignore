@@ -1,5 +1,5 @@
 # ============================================
-# .gitignore para SIGAL-LF - Incremento 2
+# .gitignore para SIGAL-LF
 # Proyecto: Sistema Integrado de Gestión de Almacén e Inventario
 # Tienda "La Fábrica" - Sucursal Huancayo
 # Stack: Node.js + Express + PostgreSQL + Vanilla JS
@@ -19,33 +19,28 @@ pnpm-lock.yaml
 # ============================================
 # 2. VARIABLES DE ENTORNO Y CONFIGURACIÓN SENSIBLE
 # ============================================
-# Variables de entorno
 .env
 .env.local
 .env.development
 .env.production
 .env.test
 .env.example
+.env.*.local
 
-# Configuración de Supabase
 supabase/config.toml
 supabase/.env
-
-# Configuración de Render
 render.yaml
+render.yml
 
 # ============================================
 # 3. ARCHIVOS DE LOGS Y TEMPORALES
 # ============================================
-# Logs
 logs/
 *.log
 *.log.*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Archivos temporales
 tmp/
 temp/
 *.tmp
@@ -53,29 +48,43 @@ temp/
 *.swp
 *.swo
 *~
+*.bak
+*.backup
+*.orig
 
 # ============================================
 # 4. ARCHIVOS DEL SISTEMA OPERATIVO
 # ============================================
+# macOS
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
+.AppleDouble
+.LSOverride
+
+# Windows
 Thumbs.db
-desktop.ini
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+*.pid
+*.socket
 
 # ============================================
 # 5. ARCHIVOS DE BASES DE DATOS LOCALES
 # ============================================
-# Bases de datos locales (si se usan para pruebas)
 *.db
 *.sqlite
 *.sqlite3
 *.db-journal
 *.db-shm
 *.db-wal
+*.sqlite-journal
 
 # ============================================
 # 6. ARCHIVOS DE PRUEBAS Y COBERTURA
@@ -85,6 +94,7 @@ coverage/
 *.lcov
 *.cov
 jest.config.js
+jest.setup.js
 *.test.js
 *.spec.js
 __tests__/
@@ -93,17 +103,35 @@ __mocks__/
 # ============================================
 # 7. ARCHIVOS DE EDITOR E IDE
 # ============================================
+# Visual Studio Code
 .vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+*.code-workspace
+
+# IntelliJ / WebStorm / PhpStorm
 .idea/
 *.iml
 .project
 .classpath
 .settings/
+*.iws
+*.ipr
+
+# Sublime Text
 *.sublime-project
 *.sublime-workspace
+*.sublime-settings
+
+# Vim
 .vim/
 .vimrc
+*.swp
+*.swo
+
+# Emacs
 .emacs.d/
+*.elc
 
 # ============================================
 # 8. ARCHIVOS DE DESPLIEGUE Y COMPILACIÓN
@@ -111,35 +139,53 @@ __mocks__/
 dist/
 build/
 out/
+release/
 *.exe
 *.out
 *.app
 *.dll
 *.so
 *.dylib
+*.jar
+*.war
+*.ear
 
 # ============================================
-# 9. ARCHIVOS ESPECÍFICOS DE SIGAL-LF
+# 9. ARCHIVOS DE DOCUMENTACIÓN GENERADA
 # ============================================
-# Reportes de pruebas
-incremento-*/resultados-pruebas/
-incremento-*/reporte-*.html
-incremento-*/jmeter-*.csv
-
-# Archivos de reportes generados
-*.pdf
-*.xlsx
-*.xls
-*.zip
-
-# Archivos de documentación generada temporalmente
+docs/_build/
+docs/api/
 docs/*.tmp
 docs/*.bak
 
+reports/
+test-reports/
+*.html
+*.xml
+*.json
+
 # ============================================
-# 10. OTROS ARCHIVOS COMUNES
+# 10. ARCHIVOS ESPECÍFICOS DE SIGAL-LF
 # ============================================
-# Claves y certificados
+incremento-*/resultados-pruebas/
+incremento-*/reporte-*.html
+incremento-*/jmeter-*.csv
+incremento-*/pruebas-*.log
+
+*.pdf
+*.xlsx
+*.xls
+*.csv
+*.zip
+*.rar
+
+backup-*.sql
+dump-*.sql
+*.backup
+
+# ============================================
+# 11. CLAVES Y CERTIFICADOS
+# ============================================
 *.pem
 *.key
 *.crt
@@ -147,15 +193,64 @@ docs/*.bak
 *.cer
 *.p12
 *.pfx
+*.p8
+*.pub
 
-# Secretos y archivos de configuración sensible
+# ============================================
+# 12. SECRETOS Y ARCHIVOS DE CONFIGURACIÓN SENSIBLE
+# ============================================
 *.secrets
 *.secret
+*.token
+*.credentials
+*.auth
 
-# Archivos de respaldo
-*.bak
-*.backup
-*.orig
+# ============================================
+# 13. ARCHIVOS DE DEPENDENCIAS Y CACHÉ
+# ============================================
+.npm/
+.npm-cache/
+.yarn/
+.yarn-cache/
+.pnpm-store/
+
+# ============================================
+# 14. ARCHIVOS DE GIT
+# ============================================
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+
+# ============================================
+# 15. ARCHIVOS DE GITHUB ACTIONS
+# ============================================
+.github/.env
+.github/*.secret
+
+# ============================================
+# 16. OTROS ARCHIVOS COMUNES
+# ============================================
+.nvmrc
+.node-version
+.npmrc
+.yarnrc
+.yarnrc.yml
+
+*.dockerignore
+Dockerfile.*
+docker-compose.*.yml
+
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ============================================
+# 17. ARCHIVOS TEMPORALES DE USUARIO
+# ============================================
+*.user
+*.local
+*.dev
 
 # ============================================
 # FIN DEL ARCHIVO .gitignore
