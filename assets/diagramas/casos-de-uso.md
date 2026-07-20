@@ -82,4 +82,24 @@ UC10	Generar Reporte de Consistencia	Supervisor	Verificación de consistencia de
 UC11	Exportar Reporte a PDF/Excel	Supervisor	Exportación de reportes a formatos descargables
 UC12	Ver Dashboard de Consistencia	Supervisor	Visualización de métricas en tiempo real
 UC13	Cerrar Caja Diaria	Cajera	Resumen de ventas del turno
+Matriz de Relación Actor - Casos de Uso
+Caso de Uso	Cajera	Supervisor	Apoyo	POS
+UC01 - Iniciar Sesión	✅	✅	✅	❌
+UC02 - Cerrar Sesión	✅	✅	✅	❌
+UC03 - Registrar Recepción de Fardo	❌	❌	✅	❌
+UC04 - Consultar Stock por Código	✅	✅	✅	❌
+UC05 - Consultar Stock por Talla y Color	✅	✅	✅	❌
+UC06 - Registrar Venta	✅	❌	❌	✅
+UC07 - Congelar Precio en Contingencia	✅	❌	❌	❌
+UC08 - Registrar Merma	❌	✅	❌	❌
+UC09 - Generar Reporte de Rotación	❌	✅	❌	❌
+UC10 - Generar Reporte de Consistencia	❌	✅	❌	❌
+UC11 - Exportar Reporte a PDF/Excel	❌	✅	❌	❌
+UC12 - Ver Dashboard de Consistencia	❌	✅	❌	❌
+UC13 - Cerrar Caja Diaria	✅	❌	❌	❌
+Prioridad de Casos de Uso
+Prioridad	Casos de Uso
+Alta	UC01, UC02, UC03, UC04, UC05, UC06
+Media	UC07, UC08, UC13
+Baja	UC09, UC10, UC11, UC12
 Diagrama de Casos de Uso — SIGAL-LF · UPLA · MDS 2026-1
