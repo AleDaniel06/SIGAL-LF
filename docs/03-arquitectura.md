@@ -290,5 +290,131 @@ El Producto Mínimo Viable para la entrega académica se acota a **1 terminal fu
 | La base de datos soporta la matriz multidimensional | ✅ | Tabla inventario indexa de forma compuesta las variables talla, color y ubicación |
 | El sistema respeta la restricción de hardware | ✅ | Arquitectura web ligera basada en JavaScript Vanilla sin sobrecarga de memoria RAM |
 
+---
+
+## 8. Endpoints de la API
+
+| Método | Endpoint | Descripción | Autenticación | Rol Requerido |
+|--------|----------|-------------|---------------|---------------|
+| POST | `/api/auth/login` | Iniciar sesión | No | - |
+| POST | `/api/auth/logout` | Cerrar sesión | Sí | Todos |
+| GET | `/api/stock/:codigo` | Consultar stock por código | Sí | Todos |
+| GET | `/api/stock/:codigo/talla/:talla` | Consultar stock por código y talla | Sí | Todos |
+| POST | `/api/inventario/recepcion` | Registrar entrada de fardo de Marvisur | Sí | Apoyo |
+| POST | `/api/inventario/venta` | Decrementar stock por venta | Sí | Cajera |
+| POST | `/api/inventario/merma` | Registrar merma justificada | Sí | Supervisor |
+| GET | `/api/reportes/rotacion` | Reporte de rotación por talla/color | Sí | Supervisor |
+| GET | `/api/reportes/consistencia` | Reporte de consistencia de saldos | Sí | Supervisor |
+| GET | `/api/reportes/export/:tipo` | Exportar reporte a PDF/Excel | Sí | Supervisor |
+
+---
+
+## 9. Ejemplos de Peticiones a la API
+
+### 9.1 Registrar Recepción de Fardo (Marvisur)
+
+**Petición:**
+```json
+POST /api/inventario/recepcion
+{
+    "codigo_barra": "8801234567890",
+    "nombre": "Camisa Roja",
+    "precio": 45.00,
+    "talla": "M",
+    "color": "Rojo",
+    "ubicacion": "almacen",
+    "cantidad": 100,
+    "estado_calidad": "Conforme",
+    "guia_remision": "MRV-2026-07-001",
+    "id_usuario": 3
+}
+```
+Respuesta Exitosa:
+```json
+{
+    "success": true,
+    "message": "Fardo registrado exitosamente",
+    "data": {
+        "id_inventario": 1,
+        "stock_anterior": 0,
+        "stock_actual": 100
+    }
+}
+```
+9.2 Registrar Venta (Decremento de Stock)
+Petición:
+```json
+POST /api/inventario/venta
+{
+    "codigo_barra": "8801234567890",
+    "talla": "M",
+    "color": "Rojo",
+    "cantidad": 1,
+    "ubicacion": "piso_venta",
+    "id_usuario": 1
+}
+```
+Respuesta Exitosa:
+```json
+{
+    "success": true,
+    "message": "Stock actualizado exitosamente",
+    "data": {
+        "stock_anterior": 100,
+        "stock_actual": 99
+    }
+}
+```
+9.3 Registrar Merma (Solo Supervisor)
+Petición:
+```json
+POST /api/inventario/merma
+{
+    "codigo_barra": "8801234567890",
+    "talla": "M",
+    "color": "Rojo",
+    "cantidad": 2,
+    "motivo": "Falla de Costura",
+    "descripcion": "Rotura en la costura del hombro",
+    "id_usuario": 2
+}
+```
+Respuesta Exitosa:
+```json
+{
+    "success": true,
+    "message": "Merma registrada exitosamente",
+    "data": {
+        "stock_anterior": 99,
+        "stock_actual": 97
+    }
+}
+```
+9.4 Consultar Stock por Código de Barras
+Petición:
+
+GET /api/stock/8801234567890
+
+Respuesta:
+```json
+{
+    "success": true,
+    "data": {
+        "codigo_barra": "8801234567890",
+        "nombre": "Camisa Roja",
+        "precio": 45.00,
+        "stock": {
+            "S": 10,
+            "M": 100,
+            "L": 15,
+            "XL": 5
+        },
+        "ubicaciones": {
+            "almacen": 120,
+            "piso_venta": 10
+        }
+    }
+}
+```
 **Revisores:** Isabel Hurtado
 **Resultado:** ✅ Aprobado
