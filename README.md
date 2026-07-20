@@ -196,11 +196,25 @@ sigal-lf/
 El avance se gestiona mediante **GitHub Projects** con tablero Kanban.  
 Cada tarea está asignada a un integrante y vinculada a su incremento.
 
-- **Issues activas** → [Tablero del proyecto](https://github.com/...)
+- **Issues activas** → Tablero del proyecto
 - **Milestones** → Cierre Incremento 1 · Cierre Incremento 2 · Cierre Incremento 3
 - **Etiquetas** → `incremento-1` `incremento-2` `incremento-3` `sqa` `análisis` `diseño` `backend` `frontend`
 
 ---
+## 💭 Reflexión del Equipo
 
+### Alexandra Milagros Cuchula Daniel — Product Owner Proxy
 
-*README.md — Proyecto SIGAL-LF · UPLA · MDS 2026-1*
+> "El desarrollo de este plan integral me ha demostrado que la ingeniería de requisitos es una disciplina viva que no puede automatizarse con herramientas de texto genéricas. Al asumir el rol de Product Owner Proxy, entendí que un modelo tradicional en Cascada habría conducido al proyecto al fracaso total en una sucursal minorista como la nuestra. Documentar requisitos estáticos al inicio del semestre nos habría impedido adaptarnos a los cambios semanales en las reglas de asignación y en los flujos transaccionales de caja. El uso de Scrum nos permitió refinar el backlog en cada ciclo quincenal, asegurando que mi conocimiento práctico del mostrador textil se tradujera fielmente en interfaces web de alta usabilidad sin retrasar los plazos académicos."
+
+### José Andrés Moori Zegarra — Scrum Master / Arquitecto Técnico
+
+> "Desde la perspectiva de la arquitectura de software y backend, la adopción de un ciclo de vida adaptativo fue la única estrategia capaz de neutralizar las severas limitaciones de hardware del entorno destino. Si hubiéramos optado por un enfoque pesado orientado a riesgos puros como el modelo Espiral, el tiempo disponible se habría diluido en auditorías documentales redundantes. Gracias a las entregas funcionales de Scrum, pude desplegar e integrar incrementos de código funcionales directamente sobre la PC de 4GB de RAM de la tienda desde las fases tempranas del desarrollo. Esto facilitó la optimización de los índices SQL y las sentencias asíncronas de Node.js en caliente, garantizando que el tiempo de respuesta final en mostrador se mantuviera firmemente por debajo del umbral crítico de 1.5 segundos."
+
+### Isabel Hurtado — Ingeniera de Software / Aseguramiento de Calidad (QA)
+
+> "Desde el rol de Aseguramiento de Calidad (QA), el enfoque Shift Left implementado en SIGAL-LF fue determinante para garantizar la fiabilidad del sistema en un entorno de alta presión como el mostrador de 'La Fábrica'. La integración de SonarCloud en el pipeline de GitHub Actions permitió detectar vulnerabilidades de seguridad y código duplicado desde las primeras fases de desarrollo, evitando que errores críticos llegaran a la PC de caja. Las pruebas de aceptación en el hardware real (4GB RAM) confirmaron que el sistema respeta los umbrales de rendimiento establecidos (< 1.5 segundos), y el registro de mermas con motivos justificados protege al personal de descuentos injustificados en sueldo. Este proyecto me enseñó que la calidad no es una fase final, sino una disciplina que debe estar presente desde el primer día."
+
+---
+
+*Proyecto SIGAL-LF · UPLA · MDS 2026-1*
