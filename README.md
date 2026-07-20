@@ -140,4 +140,52 @@ sigal-lf/
 └── incremento-3/                      # Entregables funcionales del Bloque 3
     └── README.md                      # Módulos finales, Dashboards y Release 1.0
 ```
-🎖️ Plan de Calidad y Estrategia SQA📊 Métricas de Calidad ISO/IEC 25010El sistema se somete a evaluaciones cuantitativas bajo las siguientes características críticas:Eficiencia de Desempeño (5/5 ★): Tiempo de respuesta transaccional $\le$ 1.5 segundos. Consumo controlado de memoria RAM en la terminal de caja $\le$ 65% (2.6GB).Fiabilidad (5/5 ★): Consistencia del 100% en base de datos. Rollback automático ante pérdidas bruscas de energía para un 0% de registros corruptos.Usabilidad (5/5 ★): Reducción de fatiga visual e interfaces ergonómicas. Bloqueo de escritura libre en variables lógicas mediante dropdowns (Tasa de error humano $<$ 2%).Seguridad (5/5 ★): Encriptación de contraseñas y control de accesos sin vulnerabilidades críticas en el escaneo OWASP Top 10.🛡️ Estrategia SQA (Shift Left)El aseguramiento de la calidad se ejecuta mediante pruebas tempranas para mitigar la propagación de bugs:SQA1: Auditoría estricta de requisitos y criterios de aceptación (Sprint 0).SQA2: Walkthrough técnico de arquitectura y del Diagrama Entidad-Relación.SQA3: Análisis estático automatizado de código integrado en la integración continua con SonarCloud.SQA4: Code Review e inspección de pares obligatoria en cada Pull Request antes de su mezcla a main.SQA5: Pruebas funcionales de aceptación ejecutadas in situ en la PC física de la sucursal.SQA6: Pruebas automatizadas de carga y rendimiento de la API mediante Apache JMeter.📉 La Regla 1-10-100 de Calidad: Corregir un tipo de dato en el diseño del script SQL cuesta 1. Modificar una consulta lenta en el desarrollo con Postman cuesta 10. Resolver un bug de inventario corrupto en producción que afecte financieramente el sueldo de los trabajadores de la tienda cuesta 100.🛠️ Seguimiento del ProyectoEl avance técnico y las actividades diarias se administran con transparencia a través de herramientas nativas de la plataforma:📊 Gestión de Tareas: Gestionado en GitHub Projects — Tablero Kanban del Proyecto📌 Milestones (Hitos): Cierre de Incremento 1 · Cierre de Incremento 2 · Cierre de Incremento 3🏷️ Etiquetas organizacionales: incremento-1 · incremento-2 · incremento-3 · sqa · análisis · diseño · backend · frontend🔗 Enlaces Rápidos a la Documentación📝 Documentos Técnicos de Ingeniería📋 Diagnóstico Organizacional📝 Especificación de Requisitos (ERS)🏗️ Arquitectura Técnica e Índices✅ Plan de Calidad e ISO 25010🧪 Casos de Prueba SQA🚀 Artefactos por Incremento🔒 Incremento 1 — Módulos de Seguridad y Recepción de Carga⚙️ Incremento 2 — Motor de Stock Matricial e Interoperabilidad API📊 Incremento 3 — Auditoría de Mermas, Dashboards Analíticos y Release
+
+---
+
+## ✅ Plan de Calidad
+
+**ISO/IEC 25010:** El sistema se evalúa bajo las siguientes características críticas:
+
+| Característica | Nivel | Métrica |
+|----------------|-------|---------|
+| **Eficiencia de Desempeño** | 5/5 ★ | Tiempo de respuesta ≤ 1.5 segundos · Consumo RAM ≤ 65% (2.6GB) |
+| **Fiabilidad** | 5/5 ★ | 0% de registros corruptos · Rollback automático ACID |
+| **Usabilidad** | 5/5 ★ | Tasa de error humano < 2% · Selectores fijos (dropdowns) |
+| **Seguridad** | 5/5 ★ | 0 vulnerabilidades críticas OWASP Top 10 |
+
+**Estrategia SQA (Shift Left):**
+- SQA1: Auditoría de requisitos (Sprint 0)
+- SQA2: Walkthrough de arquitectura y DER
+- SQA3: Análisis estático de código (SonarCloud)
+- SQA4: Code Review obligatorio en cada PR
+- SQA5: Pruebas de aceptación en PC real
+- SQA6: Pruebas de carga y rendimiento (JMeter)
+
+---
+
+## 📊 Seguimiento del Proyecto
+
+El avance se gestiona mediante **GitHub Projects** con tablero Kanban.  
+Cada tarea está asignada a un integrante y vinculada a su incremento.
+
+- **Issues activas** → [Tablero del proyecto](https://github.com/...)
+- **Milestones** → Cierre Incremento 1 · Cierre Incremento 2 · Cierre Incremento 3
+- **Etiquetas** → `incremento-1` `incremento-2` `incremento-3` `sqa` `análisis` `diseño` `backend` `frontend`
+
+---
+
+## 🔗 Enlaces Rápidos
+
+- 📋 [Diagnóstico Organizacional](docs/01-diagnostico.md)
+- 📝 [Especificación de Requisitos (ERS)](docs/02-ERS.md)
+- 🏗️ [Arquitectura Técnica](docs/03-arquitectura.md)
+- ✅ [Plan de Calidad ISO 25010](docs/04-plan-calidad.md)
+- 🧪 [Casos de Prueba](docs/05-casos-de-prueba.md)
+- 🚀 [Incremento 1 - Seguridad y Recepción](incremento-1/README.md)
+- ⚙️ [Incremento 2 - Stock y API](incremento-2/README.md)
+- 📊 [Incremento 3 - Mermas y Despliegue](incremento-3/README.md)
+
+---
+
+*README.md — Proyecto SIGAL-LF · UPLA · MDS 2026-1*
