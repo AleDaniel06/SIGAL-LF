@@ -159,7 +159,7 @@ SIGAL-LF es un sistema web diseñado para gestionar el inventario de la tienda "
 ## 10. Contacto y Soporte
 
 - **Responsable del sistema:** José Moori (Scrum Master)
-- **Correo:** jose.moori@upla.edu.pe
+- **Correo:** T00052C@ms.upla.edu.pe
 - **Reporte de incidentes:** Crear un issue en GitHub
 
 ---
