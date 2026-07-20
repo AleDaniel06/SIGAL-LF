@@ -119,7 +119,7 @@ CREATE TABLE usuarios (
     password_hash VARCHAR(255) NOT NULL,
     rol VARCHAR(20) CHECK(rol IN ('cajera', 'supervisor', 'apoyo')) NOT NULL,
     activo BOOLEAN DEFAULT TRUE,
-    creado_em TIMESTAMP DEFAULT NOW()
+    creado_en TIMESTAMP DEFAULT NOW()
 );
 
 -- Tabla de prendas (catálogo maestro)
@@ -155,6 +155,19 @@ CREATE TABLE movimientos (
     estado VARCHAR(10) CHECK(estado IN ('en proceso', 'completado', 'cancelado')) NOT NULL,
     fecha_ingreso TIMESTAMP DEFAULT NOW(),
     activo BOOLEAN DEFAULT FALSE
+);
+-- Tabla de sincronización con sistema de ventas (integración con POS)
+CREATE TABLE sync_ventas (
+    id_sync SERIAL PRIMARY KEY,
+    codigo_prenda VARCHAR(50) NOT NULL,
+    talla VARCHAR(5) NOT NULL,
+    color VARCHAR(50) NOT NULL,
+    cantidad_vendida INTEGER NOT NULL,
+    fecha_venta TIMESTAMP DEFAULT NOW(),
+    estado_sync VARCHAR(20) CHECK(estado_sync IN ('pendiente', 'procesado', 'error')) DEFAULT 'pendiente',
+    intentos INTEGER DEFAULT 0,
+    ultimo_intento TIMESTAMP,
+    error_mensaje TEXT
 );
 
 -- ============================================
