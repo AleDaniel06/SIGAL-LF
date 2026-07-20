@@ -163,47 +163,47 @@ El árbol jerárquico del repositorio organiza el código y la documentación t�
 
 ```text
 sigal-lf/
-├── .env.example                     # Variables de entorno (ejemplo)
-├── .gitignore                       # Archivos ignorados por Git (raíz)
-├── README.md                        # Este archivo (con reflexiones incluidas)
+├── .env.example                     
+├── .gitignore                       
+├── README.md                        
 │
 ├── assets/
 │   └── diagramas/
-│       ├── .gitkeep                 # Mantiene la carpeta en Git
-│       ├── casos-de-uso.md          # Diagrama de Casos de Uso
-│       ├── der.md                   # Diagrama Entidad-Relación
-│       ├── diagrama-actividades.md  # Diagrama de Actividades (Recepción)
-│       ├── diagrama-clases.md       # Diagrama de Clases (Backend)
-│       ├── diagrama-secuencia-recepcion.md  # Diagrama de Secuencia (Recepción)
-│       ├── diagrama-secuencia-venta.md      # Diagrama de Secuencia (Venta)
-│       ├── Pantalla-1-POS.md        # Diagrama de Consulta Express
-│       ├── Pantalla-2-cierre-de-caja.md     # Diagrama de Cierre/Caja
-│       └── Pantalla-3-dashboard.md  # Diagrama de Dashboard
+│       ├── .gitkeep                 
+│       ├── casos-de-uso.md          
+│       ├── der.md                   
+│       ├── diagrama-actividades.md  
+│       ├── diagrama-clases.md       
+│       ├── diagrama-secuencia-recepcion.md  
+│       ├── diagrama-secuencia-venta.md      
+│       ├── Pantalla-1-POS.md        
+│       ├── Pantalla-2-cierre-de-caja.md     
+│       └── Pantalla-3-dashboard.md  
 │
 ├── docs/
-│   ├── 01-diagnostico.md            # Diagnóstico organizacional
-│   ├── 02-ERS.md                    # Especificación de Requisitos
-│   ├── 03-arquitectura.md           # Diseño de arquitectura
-│   ├── 04-plan-calidad.md           # ISO 25010 + SQA Shift Left
-│   ├── 05-casos-de-prueba.md        # Casos de prueba (SQA5 y SQA6)
-│   └── 06-manual-usuario.md         # Manual de usuario
+│   ├── 01-diagnostico.md            
+│   ├── 02-ERS.md                    
+│   ├── 03-arquitectura.md           
+│   ├── 04-plan-calidad.md           
+│   ├── 05-casos-de-prueba.md        
+│   └── 06-manual-usuario.md         
 │
 ├── incremento-1/
-│   └── README.md                    # Artefactos del Incremento 1
+│   └── README.md                    
 │
 ├── incremento-2/
-│   ├── README.md                    # Artefactos del Incremento 2
-│   ├── .gitignore                   # .gitignore específico del incremento
-│   └── README1.md                   # Documentación adicional (SQL, API, etc.)
+│   ├── README.md                    
+│   ├── .gitignore                   
+│   └── README1.md                   
 │
 ├── incremento-3/
-│   └── README.md                    # Artefactos del Incremento 3
+│   └── README.md                    
 │
 └── src/
     └── database/
-        ├── indices.sql              # Índices de optimización
-        ├── schema.sql               # Creación de tablas
-        └── seed.sql                 # Datos de prueba
+        ├── indices.sql              
+        ├── schema.sql               
+        └── seed.sql                 
 ```
 
 ---
