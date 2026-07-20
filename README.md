@@ -185,17 +185,5 @@ Cada tarea está asignada a un integrante y vinculada a su incremento.
 
 ---
 
-## 🔗 Enlaces Rápidos
-
-- 📋 [Diagnóstico Organizacional](docs/01-diagnostico.md)
-- 📝 [Especificación de Requisitos (ERS)](docs/02-ERS.md)
-- 🏗️ [Arquitectura Técnica](docs/03-arquitectura.md)
-- ✅ [Plan de Calidad ISO 25010](docs/04-plan-calidad.md)
-- 🧪 [Casos de Prueba](docs/05-casos-de-prueba.md)
-- 🚀 [Incremento 1 - Seguridad y Recepción](incremento-1/README.md)
-- ⚙️ [Incremento 2 - Stock y API](incremento-2/README.md)
-- 📊 [Incremento 3 - Mermas y Despliegue](incremento-3/README.md)
-
----
 
 *README.md — Proyecto SIGAL-LF · UPLA · MDS 2026-1*
