@@ -25,7 +25,7 @@
 | :--- | :--- | :---: |
 | Diagnóstico organizacional y análisis de contexto | `docs/01-diagnostico.md` | ✅ |
 | Especificación de Requisitos de Software (ERS) v1.0 | `docs/02-ERS.md` | ✅ |
-| Wireframes y prototipos UI (Figma) | [Ver en Figma →]([https://www.figma.com/design/wLVkszBOGEBNrfOP21nKX3/Sistema-de-ventas-e-inventario--Community-?node-id=1-2&t=DdacM4M7ehPcY5Zx-1](https://www.figma.com/make/uZrBafr9Ie5NdCXooxZ4M2/Sistema-de-Inventario?fullscreen=1&t=35yQ2zDvDHuZXCLS-1&code-node-id=0-9)) | ✅ |
+| Wireframes y prototipos UI (Figma) | [Ver en Figma →](https://www.figma.com/make/uZrBafr9Ie5NdCXooxZ4M2/Sistema-de-Inventario?fullscreen=1&t=35yQ2zDvDHuZXCLS-1&code-node-id=0-9) | ✅ |
 | Script SQL de inicialización de tablas (`usuarios`, `prendas`, `inventario`) | `incremento-1/sql/init.sql` | ✅ |
 | Módulo de Autenticación (Login + RBAC) | `incremento-1/auth/` | ✅ |
 | Interfaz de Recepción de Carga (Formulario web Vanilla JS) | `incremento-1/recepcion/` | ✅ |
