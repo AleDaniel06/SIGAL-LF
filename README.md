@@ -142,7 +142,7 @@ Este proyecto aplica Scrum porque los requisitos del cliente evolucionan constan
 
 ---
 
-## 🚀 Incrementos del Proyecto
+##Incrementos del Proyecto
 
 | Incremento | Sprints | Semanas | Contenido | Módulos |
 |------------|---------|---------|-----------|---------|
@@ -208,7 +208,7 @@ sigal-lf/
 
 ---
 
-## ⚠️ Plan de Mitigación de Riesgos (5 Riesgos)
+## Plan de Mitigación de Riesgos (5 Riesgos)
 
 | # | Riesgo | Probabilidad (1-5) | Impacto (1-5) | Severidad | Mitigación | Contingencia |
 |---|--------|-------------------|---------------|-----------|------------|--------------|
@@ -220,7 +220,7 @@ sigal-lf/
 
 ---
 
-## ✅ Plan de Calidad ISO/IEC 25010
+## Plan de Calidad ISO/IEC 25010
 
 | Característica | Nivel | Métrica |
 |----------------|-------|---------|
