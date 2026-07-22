@@ -171,7 +171,7 @@ CREATE TABLE sync_ventas (
 );
 
 -- ============================================
--- 🔥 ÍNDICES DE OPTIMIZACIÓN (Agregar AQUÍ)
+-- ÍNDICES DE OPTIMIZACIÓN (Agregar AQUÍ)
 -- ============================================
 
 -- Para búsquedas rápidas por código de barras en el mostrador
