@@ -118,8 +118,8 @@ PREVENCIÓN (40%)                  DETECCIÓN (45%)                  CORRECCIÓN
 | **SQA2** | Walkthrough de arquitectura y modelo de datos (DER) | Diseño (Sprint 0-1) | Sí | José Moori + Alexandra | Revisión presencial + diagramas |
 | **SQA3** | Análisis estático en cada Pull Request | Construcción (Sprint 1-6) | Sí | Todos (automático) | SonarCloud + GitHub Actions |
 | **SQA4** | Code Review obligatorio en cada PR (mínimo 1 revisor) | Construcción (Sprint 1-6) | Sí | Todos (rotativo) | GitHub Pull Requests |
-| **SQA5** | Pruebas de aceptación en entorno real (PC de caja) | Despliegue (Sprint 6) | ⚠ PARCIAL | Todos | Casos de prueba (doc 05) + PC física |
-| **SQA6** | Pruebas de rendimiento (consultas < 1.5s, consumo RAM) | Despliegue (Sprint 6) | ⚠ PARCIAL | José Moori | Network Panel + Task Manager |
+| **SQA5** | Pruebas de aceptación en entorno real (PC de caja) | Despliegue (Sprint 6) |  PARCIAL | Todos | Casos de prueba (doc 05) + PC física |
+| **SQA6** | Pruebas de rendimiento (consultas < 1.5s, consumo RAM) | Despliegue (Sprint 6) |  PARCIAL | José Moori | Network Panel + Task Manager |
 
 > ── **Nota sobre SQA5 y SQA6:** Son parcialmente Shift Left porque dependen de software funcional, pero se planifican desde el inicio (los casos de prueba están escritos antes del desarrollo en el documento `05-casos-de-prueba.md`).
 
