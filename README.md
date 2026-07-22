@@ -1,4 +1,4 @@
-# 🏬 SIGAL-LF: Sistema Integrado de Gestión de Almacén e Inventario
+# SIGAL-LF: Sistema Integrado de Gestión de Almacén e Inventario
 ### Tienda "La Fábrica" — Sucursal Huancayo (Calle Real)
 
 <p align="center">
