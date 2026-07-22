@@ -119,8 +119,8 @@ Tiempo estimado de demostración: 3 minutos
 
 La implementación del motor de persistencia y la API de integración confirmó que el problema de "latencia de Excel" en "La Fábrica" se resolvía completamente al eliminar la dependencia del ingeniero central. La combinación de una base de datos relacional con índices optimizados y una API REST ligera permite consultas y actualizaciones en tiempo real desde el mostrador, reduciendo el tiempo de respuesta de días a milisegundos.
 
-* ★ **Decisión clave:** La arquitectura de la base de datos debe priorizar la velocidad de consulta sobre la complejidad del modelo. La implementación de `UNIQUE(id_prenda, talla, color, ubicacion)` evitó duplicidades y garantizó la integridad del stock en todo momento.
-* ★ **Próximo paso:** El Incremento 3 se enfocará en el Panel de Auditoría de Mermas (MOD-05), el Dashboard de Consistencia y Reportes (MOD-04), y el despliegue final en producción (Render Cloud).
+* **Decisión clave:** La arquitectura de la base de datos debe priorizar la velocidad de consulta sobre la complejidad del modelo. La implementación de `UNIQUE(id_prenda, talla, color, ubicacion)` evitó duplicidades y garantizó la integridad del stock en todo momento.
+* **Próximo paso:** El Incremento 3 se enfocará en el Panel de Auditoría de Mermas (MOD-05), el Dashboard de Consistencia y Reportes (MOD-04), y el despliegue final en producción (Render Cloud).
 
 ---
 *Incremento 2 — Proyecto SIGAL-LF · UPLA · MDS 2026-1*
