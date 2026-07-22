@@ -1,4 +1,4 @@
-# 📖 Manual de Usuario — SIGAL-LF
+# Manual de Usuario — SIGAL-LF
 
 **Sistema Integrado de Gestión de Almacén e Inventario en Tienda "La Fábrica" - Sucursal Huancayo**
 
@@ -43,9 +43,9 @@ SIGAL-LF es un sistema web diseñado para gestionar el inventario de la tienda "
    - **Ubicación:** Almacén General / Piso de Venta
 4. Ingresar la **cantidad** recibida
 5. Seleccionar el **estado de calidad:**
-   - ✅ Conforme
-   - ⚠️ Falla de Costura
-   - ⚠️ Manchado
+   - Conforme
+   - Falla de Costura
+   - Manchado
 6. Ingresar el número de **Guía de Remisión** de Marvisur
 7. Hacer clic en **"Guardar Fardo"**
 
