@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 Objetivo del Incremento
+## Objetivo del Incremento
 > Completar el sistema SIGAL-LF con los módulos de control operativo (Mermas), auditoría (Dashboard y Reportes) y el despliegue final en producción. Este incremento garantiza que el supervisor pueda registrar justificadamente las pérdidas de inventario, que el equipo tenga visibilidad de la rotación de prendas y que el sistema esté completamente operativo en la PC de caja de "La Fábrica" - Sucursal Huancayo.
 
 ### Enfoques Específicos Cubiertos:
@@ -23,7 +23,7 @@
 
 ---
 
-## 📦 Entregables del Incremento
+## Entregables del Incremento
 
 | Artefacto | Ubicación en Repositorio | Responsable | Estado |
 | :--- | :--- | :--- | :---: |
@@ -42,7 +42,7 @@
 
 ---
 
-## 🛠️ Issues del Incremento
+## Issues del Incremento
 
 *   `#22` Diseñar formulario de registro de mermas (supervisor)
 *   `#23` Implementar validación de motivos obligatorios
@@ -60,7 +60,7 @@
 
 ---
 
-## 🔄 Demostración del Ciclo Completo
+## Demostración del Ciclo Completo
 
 ```text
 [Supervisor - Mermas]
@@ -91,7 +91,7 @@
 
 ---
 
-## 📊 Estado de Calidad (SQA)
+## Estado de Calidad (SQA)
 
 ### Actividades SQA Ejecutadas
 | Actividad SQA | Responsable | Herramienta | Estado |
@@ -118,7 +118,7 @@
 
 ---
 
-## 💡 Lección Aprendida
+## Lección Aprendida
 
 > La implementación del módulo de mermas y el dashboard de reportes confirmó que el problema de "cruce de códigos" y "descuadres económicos" en "La Fábrica" se resuelve completamente al proporcionar al supervisor visibilidad en tiempo real del inventario y herramientas para justificar las pérdidas. La capacidad de registrar mermas con motivos verificables elimina la necesidad de cruzar códigos en el mostrador y protege el sueldo del personal operativo.
 > 
