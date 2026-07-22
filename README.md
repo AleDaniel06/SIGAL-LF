@@ -9,7 +9,7 @@
 
 ---
 
-## 🏛️ Información Institucional
+## Información Institucional
 * **Institución:** Universidad Peruana Los Andes (UPLA)
 * **Facultad:** Ingeniería
 * **Escuela:** Ingeniería de Sistemas y Computación
@@ -17,7 +17,7 @@
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 
 | Nombre | Rol en el proyecto |
 |--------|-------------------|
@@ -27,7 +27,7 @@
 
 ---
 
-## 🎯 Contexto del Problema
+## Contexto del Problema
 
 **Cliente:** Tienda "La Fábrica" — Sucursal Huancayo, Calle Real, Junín
 
@@ -41,7 +41,7 @@
   
 ---
 
-## 💡 Solución Propuesta
+## Solución Propuesta
 
 **Arquitectura centralizada con actualización en tiempo real:**  
 SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso manual en Excel. El inventario se actualiza en tiempo real desde la recepción de fardos de Marvisur, permitiendo consultas instantáneas por código, talla, color y ubicación desde la PC de caja. El sistema incluye módulos de autenticación, recepción, stock matricial, consulta express, mermas y reportes.
@@ -56,7 +56,7 @@ SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso
 
 ---
 
-## 📌 Nota sobre el alcance
+## Nota sobre el alcance
 
 **SIGAL-LF es un sistema de GESTIÓN DE INVENTARIO y ALMACÉN.**
 
@@ -84,7 +84,7 @@ SIGAL-LF es una aplicación web centralizada que elimina la latencia del proceso
 
 ---
 
-### 🔗 Integración con el POS
+### Integración con el POS
 
 La integración con el POS es **solo para**:
 
@@ -96,7 +96,7 @@ La integración con el POS es **solo para**:
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 | Capa | Tecnología | Justificación |
 |------|------------|---------------|
@@ -114,7 +114,7 @@ La integración con el POS es **solo para**:
 
 ---
 
-## 📐 Metodología
+## Metodología
 
 **Modelo de Proceso: Scrum (Adaptado con Integración Continua de Datos)**
 
@@ -158,7 +158,7 @@ Este proyecto aplica Scrum porque los requisitos del cliente evolucionan constan
 
 ---
 
-## 📁 Estructura del Repositorio
+## Estructura del Repositorio
 El árbol jerárquico del repositorio organiza el código y la documentación técnica de manera limpia y modular:
 
 ```text
@@ -231,7 +231,7 @@ sigal-lf/
 
 ---
 
-## 🔧 Estrategia SQA (Shift Left) — 7 Actividades
+## Estrategia SQA (Shift Left) — 7 Actividades
 
 | ID | Actividad | Fase | Shift Left | Responsable | Herramienta |
 |----|-----------|------|------------|-------------|-------------|
@@ -245,7 +245,7 @@ sigal-lf/
 
 ---
 
-## 📊 Seguimiento del Proyecto
+##Seguimiento del Proyecto
 
 El avance se gestiona mediante **GitHub Projects** con tablero Kanban.  
 Cada tarea está asignada a un integrante y vinculada a su incremento.
@@ -255,7 +255,7 @@ Cada tarea está asignada a un integrante y vinculada a su incremento.
 - **Etiquetas** → `incremento-1` `incremento-2` `incremento-3` `sqa` `análisis` `diseño` `backend` `frontend`
 
 ---
-## 💭 Reflexión del Equipo
+## Reflexión del Equipo
 
 ### Alexandra Milagros Cuchula Daniel — Product Owner Proxy
 
