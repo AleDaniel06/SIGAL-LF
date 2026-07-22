@@ -134,11 +134,11 @@ Este proyecto aplica Scrum porque los requisitos del cliente evolucionan constan
 
 **Scrum fue seleccionado unánimemente porque:**
 
-1. **Naturaleza Empírica frente a la Volatilidad del Retail:** En la sucursal de "La Fábrica", las variables operativas cambian de forma imprevista (traslados inter-tiendas de Marvisur no programados y fluctuaciones de precios sin aviso). Scrum permite que el sistema evolucione de forma quincenal a través de la retroalimentación directa en el mostrador.
+1. ** En la sucursal de "La Fábrica", las variables operativas cambian de forma imprevista (traslados inter-tiendas de Marvisur no programados y fluctuaciones de precios sin aviso). Scrum permite que el sistema evolucione de forma quincenal a través de la retroalimentación directa en el mostrador.
 
-2. **Mitigación Temprana del Riesgo de Hardware:** Al ser la máquina de caja un equipo antiguo con 4GB RAM, Scrum obliga al equipo a entregar un incremento de software utilizable al final de cada Sprint, permitiendo probar la ligereza de la interfaz web directamente en la computadora de la tienda desde las primeras semanas.
+2. ** Al ser la máquina de caja un equipo antiguo con 4GB RAM, Scrum obliga al equipo a entregar un incremento de software utilizable al final de cada Sprint, permitiendo probar la ligereza de la interfaz web directamente en la computadora de la tienda desde las primeras semanas.
 
-3. **Idoneidad para Equipos Reducidos:** Modelos complejos como el Espiral demandan comités de gestión de riesgos que consumirían el tiempo de codificación de un equipo de tres personas. Scrum proporciona un marco ligero que elimina la burocracia técnica.
+3. ** Modelos complejos como el Espiral demandan comités de gestión de riesgos que consumirían el tiempo de codificación de un equipo de tres personas. Scrum proporciona un marco ligero que elimina la burocracia técnica.
 
 ---
 
