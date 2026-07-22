@@ -55,9 +55,9 @@ Ver todas las issues etiquetadas con `incremento-1` en el tablero del proyecto.
 
 El diagnóstico confirmó que el problema principal de "La Fábrica" - Sucursal Huancayo no era únicamente la falta de digitalización del inventario, sino la **dependencia de un proceso manual asíncrono con el ingeniero central**. La latencia de actualización (archivo Excel → correo → ingeniero central → sistema) era el verdadero cuello de botella que provocaba que el stock virtual estuviera permanentemente desactualizado, generando el cruce de códigos en mostrador y los descuadres económicos que afectaban al personal.
 
-★ **Decisión clave de arquitectura:** Esta conclusión determinó que la arquitectura de SIGAL-LF debía ser **centralizada en la nube con actualización en tiempo real**, eliminando por completo la dependencia de procesos manuales intermedios. El Incremento 2 se enfocará en construir la estructura del motor de persistencia que permita la consulta de stock desglosada de forma exacta por talla, color y ubicación espacial.
+**Decisión clave de arquitectura:** Esta conclusión determinó que la arquitectura de SIGAL-LF debía ser **centralizada en la nube con actualización en tiempo real**, eliminando por completo la dependencia de procesos manuales intermedios. El Incremento 2 se enfocará en construir la estructura del motor de persistencia que permita la consulta de stock desglosada de forma exacta por talla, color y ubicación espacial.
 
-🟢 **Validación de entorno socio-técnico:** La restricción de no uso de celulares en el piso de venta fue confirmada como un factor crítico durante el levantamiento de información. Esto reafirmó la decisión de centralizar el software en la terminal física de la caja, convirtiendo a la cajera en el nodo central de consulta a viva voz para dar soporte ágil a los vendedores en el piso.
+**Validación de entorno socio-técnico:** La restricción de no uso de celulares en el piso de venta fue confirmada como un factor crítico durante el levantamiento de información. Esto reafirmó la decisión de centralizar el software en la terminal física de la caja, convirtiendo a la cajera en el nodo central de consulta a viva voz para dar soporte ágil a los vendedores en el piso.
 
 ---
 
